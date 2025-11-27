@@ -1,0 +1,2 @@
+It's a shared library in the Microsoft Windows or OS/2 operating system. A DLL can contain executable code, data, and resources.
+It may or may not have a .dll extension, like a shared library(. so) on linux.

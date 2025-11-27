@@ -1,0 +1,1 @@
+Fingernails grow faster than toenails primarily because of increased blood flow and more frequent stimulation. Frequent use and minor trauma to fingernails also signal the body to increase growth to repair or replace the nail more quickly. 
