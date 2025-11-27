@@ -48,4 +48,4 @@ Welcome to Zou. It is an island located on the back of a massive, millennium-old
 Except this, there is not much to say about this island.
 ```
 
-There seems to be a directory which I didn't see on the first login
+There seems to be a directory which I didn't see on the first login named `.the_whale_tree`
