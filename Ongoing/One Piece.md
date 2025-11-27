@@ -64,3 +64,5 @@ Luffy: I will show them, there can be only one Pirate King and it will be me !!
 Inuarashi: There is another issue regarding the Road Poneglyph.
 Nekomamushi: They are written in an ancient language and a very few people around the world can actually read them.
 ```
+
+Steganography on one of the .road_poneglyph.jpg 
