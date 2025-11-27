@@ -37,4 +37,13 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 On the Source code of the landing page, this was encoded:
 `Nami ensures there are precisely 3472 possible places where she could have lost it.`
 
-On FTP, there are some data
+On FTP, there are some files
+```.notes.txt
+Hagrid told me that spells names are not good since they will not "rock you"
+Hermonine loves historical text editors along with reading old books.
+```
+and
+```welcome.txt
+Welcome to Zou. It is an island located on the back of a massive, millennium-old elephant named Zunesha that roams the New World.
+Except this, there is not much to say about this island.
+```
