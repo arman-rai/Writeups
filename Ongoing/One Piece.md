@@ -34,4 +34,5 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-On the Source code of the
+On the Source code of the landing page, this was encoded:
+`Nami ensures there are precisely 3472 possible places where she could have lost it.`
