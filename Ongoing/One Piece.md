@@ -47,3 +47,5 @@ and
 Welcome to Zou. It is an island located on the back of a massive, millennium-old elephant named Zunesha that roams the New World.
 Except this, there is not much to say about this island.
 ```
+
+There seems to be a directory which I didn't see on the first login
