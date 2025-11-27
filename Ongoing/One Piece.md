@@ -77,3 +77,4 @@ Got to know that we have to find this repo for moving on
 https://github.com/1FreyR/LogPose/blob/master/LogPose.txt
 
 and I got nothing on fuzzing subdomains and directories heck even files, I think somethings wrong with my machine
+Imma try this after some time
