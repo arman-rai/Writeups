@@ -13,7 +13,7 @@ Service Info: OSs: Linux, Unix; CPE: cpe:/o:linux:linux_kernel
 ```
 
 Found some directories, fuzzed the static one and found /static/00 which led to a directory /dev1243224123123 and got a login page,
-checked some default creds, not working, checked the src code got /dev.js and got the creds, siemDev:california
+checked some default creds, not working, checked the src code got /dev.js and got the creds, `siemDev:california`
 
 which was reused in the ftp server, got a few pcap files, damn I've been searching for 10 minutes straight and found nothing interesting
 
