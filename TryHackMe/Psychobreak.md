@@ -83,3 +83,60 @@ and got the keeper key
 
 Got these on ?shell=ls..
 680e89809965ec41e64dc7e447f175ab be8bc662d1e36575a52da40beba38275 index.php
+
+```
+namura@pop-os ~/tryhackme/psycho $ file Table.jpg
+Table.jpg: Zip archive data, at least v2.0 to extract, compression method=deflate
+namura@pop-os ~/tryhackme/psycho $ steghide extract -sf Table.jpg
+Enter passphrase:
+steghide: the file format of the file "Table.jpg" is not supported.
+namura@pop-os ~/tryhackme/psycho $ steghide extract -sf Table.jpg
+Enter passphrase:
+steghide: the file format of the file "Table.jpg" is not supported.
+namura@pop-os ~/tryhackme/psycho $ mv Table.jpg Table.zip
+namura@pop-os ~/tryhackme/psycho $ file Table.zip
+Table.zip: Zip archive data, at least v2.0 to extract, compression method=deflate
+namura@pop-os ~/tryhackme/psycho $ unzip Table.zip
+Archive:  Table.zip
+  inflating: Joseph_Oda.jpg
+  inflating: key.wav
+namura@pop-os ~/tryhackme/psycho $ ls -la
+total 124
+drwxrwxr-x 2 namura namura  4096 Nov 30 11:28 .
+drwxrwxr-x 5 namura namura  4096 Nov 30 11:25 ..
+-rw-r--r-- 1 namura namura   191 Jul  7  2020 helpme.txt
+-rw-rw-r-- 1 namura namura 26484 Nov 30 11:25 helpme.zip
+-rw-r--r-- 1 namura namura 25399 Jul  7  2020 Joseph_Oda.jpg
+-rw-r--r-- 1 namura namura 26844 Jul  7  2020 key.wav
+-rw-r--r-- 1 namura namura 26093 Jul  7  2020 Table.zip
+namura@pop-os ~/tryhackme/psycho $ open Joseph_Oda.jpg
+namura@pop-os ~/tryhackme/psycho
+namura@pop-os ~/tryhackme/psycho $ exiftool Joseph_Oda.jpg
+ExifTool Version Number         : 12.40
+File Name                       : Joseph_Oda.jpg
+Directory                       : .
+File Size                       : 25 KiB
+File Modification Date/Time     : 2020:07:07 22:52:08+05:45
+File Access Date/Time           : 2020:07:07 22:53:14+05:45
+File Inode Change Date/Time     : 2025:11:30 11:28:00+05:45
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : None
+X Resolution                    : 1
+Y Resolution                    : 1
+Image Width                     : 350
+Image Height                    : 490
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 350x490
+Megapixels                      : 0.172
+namura@pop-os ~/tryhackme/psycho $ strings Joseph_Oda.jpg | less
+namura@pop-os ~/tryhackme/psycho $ audacity key.wav
+
+
+```
