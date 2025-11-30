@@ -85,6 +85,37 @@ Got these on ?shell=ls..
 680e89809965ec41e64dc7e447f175ab be8bc662d1e36575a52da40beba38275 index.php
 
 ```
+namura@pop-os ~/tryhackme $ cd psycho/
+namura@pop-os ~/tryhackme/psycho $ ls
+namura@pop-os ~/tryhackme/psycho $ ls -la
+total 36
+drwxrwxr-x 2 namura namura  4096 Nov 30 11:25 .
+drwxrwxr-x 5 namura namura  4096 Nov 30 11:25 ..
+-rw-rw-r-- 1 namura namura 26484 Nov 30 11:25 helpme.zip
+namura@pop-os ~/tryhackme/psycho $ unzip helpme.zip
+Archive:  helpme.zip
+  inflating: helpme.txt
+  inflating: Table.jpg
+namura@pop-os ~/tryhackme/psycho $ ls -la
+total 68
+drwxrwxr-x 2 namura namura  4096 Nov 30 11:25 .
+drwxrwxr-x 5 namura namura  4096 Nov 30 11:25 ..
+-rw-r--r-- 1 namura namura   191 Jul  7  2020 helpme.txt
+-rw-rw-r-- 1 namura namura 26484 Nov 30 11:25 helpme.zip
+-rw-r--r-- 1 namura namura 26093 Jul  7  2020 Table.jpg
+namura@pop-os ~/tryhackme/psycho $ cat helpme.
+cat: helpme.: No such file or directory
+namura@pop-os ~/tryhackme/psycho $ cat helpme.txt
+
+From Joseph,
+
+Who ever sees this message "HELP Me". Ruvik locked me up in this cell. Get the key on the table and unlock this cell. I'll tell you what happened when I am out of
+this cell.
+
+namura@pop-os ~/tryhackme/psycho $ open Table.jpg
+namura@pop-os ~/tryhackme/psycho
+
+
 namura@pop-os ~/tryhackme/psycho $ file Table.jpg
 Table.jpg: Zip archive data, at least v2.0 to extract, compression method=deflate
 namura@pop-os ~/tryhackme/psycho $ steghide extract -sf Table.jpg
