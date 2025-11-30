@@ -174,3 +174,5 @@ namura@pop-os ~/tryhackme/psycho $ audacity key.wav
 
 got a code using 
 https://morsecode.world/international/decoder/audio-decoder-adaptive.html
+
+the file thankyou.txt was steg hidden and got the creds
