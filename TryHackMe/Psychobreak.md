@@ -74,3 +74,6 @@ Tizmg_nv_zxxvhh_gl_gsv_nzk_kovzhv => Grant_me_access_to_the_map_please
 
 and got to the map
 also got SafeHeaven/ and abandonedRoom/
+
+on fuzzing SafeHeaven got SafeHeaven/keeper/
+and 
