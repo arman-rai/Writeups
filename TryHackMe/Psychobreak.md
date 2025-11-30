@@ -176,4 +176,4 @@ got a code using
 https://morsecode.world/international/decoder/audio-decoder-adaptive.html
 
 the file thankyou.txt was steg hidden and got the creds
-joseph:intotheterror445 
+joseph:intotheterror445 q
