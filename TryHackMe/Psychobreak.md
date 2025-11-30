@@ -73,4 +73,4 @@ then there is this
 Tizmg_nv_zxxvhh_gl_gsv_nzk_kovzhv => Grant_me_access_to_the_map_please
 
 and got to the map
-also got SafeHeaven/ and 
+also got SafeHeaven/ and abandonedRoom/
