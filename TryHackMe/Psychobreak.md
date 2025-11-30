@@ -76,4 +76,7 @@ and got to the map
 also got SafeHeaven/ and abandonedRoom/
 
 on fuzzing SafeHeaven got SafeHeaven/keeper/
-and 
+and got a OSINT challange which led to St. Augustine Lighthouse
+
+and got the keeper key
+48ee41458eb0b43bf82b986cecf3af01
