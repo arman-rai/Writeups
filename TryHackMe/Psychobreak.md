@@ -58,4 +58,5 @@ OS details: Linux 4.4
 On Source code got /sadistRoom and then got the keys
 532219a04ab7a02b56faafbec1a4c1ea
 
-and then 
+and then inputted the code to get to the /lockerRoom 
+then 
