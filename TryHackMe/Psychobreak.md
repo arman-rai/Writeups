@@ -10,7 +10,7 @@ euta ma ftp wala thiyo
 
 ftp bata download gare
 
-	.wav file lai strings ma convert gare
+.wav file lai strings ma convert gare
 
 euta file thiyo tyas ma dictionary ra checker file thiyo
 
