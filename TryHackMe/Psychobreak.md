@@ -80,3 +80,6 @@ and got a OSINT challange which led to St. Augustine Lighthouse
 
 and got the keeper key
 48ee41458eb0b43bf82b986cecf3af01
+
+Got these on ?shell=ls..
+680e89809965ec41e64dc7e447f175ab be8bc662d1e36575a52da40beba38275 index.php
