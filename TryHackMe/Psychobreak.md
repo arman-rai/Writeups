@@ -176,4 +176,9 @@ got a code using
 https://morsecode.world/international/decoder/audio-decoder-adaptive.html
 
 the file thankyou.txt was steg hidden and got the creds
-joseph:intotheterror445 q
+joseph:intotheterror445 
+
+got some files
+cracked it using a simple checker and then got the encrypted value
+used this https://www.dcode.fr/multitap-abc-cipher
+and got password to kidman
