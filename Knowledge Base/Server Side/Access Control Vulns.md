@@ -1,1 +1,1 @@
-## Unprotected functionalities 
+## Unprotected and obscure functionalities
