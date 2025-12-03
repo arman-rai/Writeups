@@ -16,6 +16,7 @@
     
 - **Bypasses:** Filters blocking `../` can often be evaded by alternative encodings (e.g. `%2e%2e/`, `....//`), numeric IPs (e.g. `017700000001` for `127.0.0.1`), or Unicode tricks.
 	- Nested traversal sequences like `....//`, `....\/`
+	- Null byte can sometimes terminate the string and bypass checks
     
 - **Mitigation:** Never pass raw user input to filesystem calls. Use allow-lists (only permit expected filenames), canonicalize paths and verify they stay within a safe base directory. Store files outside the webroot if possible.
 
