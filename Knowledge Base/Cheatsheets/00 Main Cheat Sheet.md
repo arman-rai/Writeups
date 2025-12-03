@@ -1014,7 +1014,7 @@ sudo tcpdump -i tun0 icmp -v -n
 ping -c 5 192.168.45.226
 ```
 
-## Upgrade Shell,
+## Upgrade Shell
 
 ```
 which python / which python3
