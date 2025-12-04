@@ -113,3 +113,4 @@ got stuck, fuzzed the password and got `thebeast`
 namura@pop-os ~/tryhackme $ ffuf -u http://10.48.159.231/0n1g4sh1m4.php      -X POST      -H "Content-Type: application/x-www-form-urlencoded"      -d "user=K1ng_0f_th3_B3%40sts&password=FUZZ&submit_creds=Login"      -w /opt/rockyou.txt -fs 1503
 ```
 
+Got another poneglyph but it couldn't be decoded using cyberchef
