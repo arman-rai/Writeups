@@ -104,5 +104,6 @@ on changing the cookie to `CakeForYou`
 I got this `55L9sMDppfRjUzVV11Uac`
 
 Got to a page `/r4nd0m.html`
-and got 2 games where one had a directory to ``
+and got 2 games where one game's src code had a  to `/0n1g4sh1m4.php`
+and I saw the src code, it doesn't let you win I guess lol
 
