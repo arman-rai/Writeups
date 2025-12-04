@@ -93,3 +93,5 @@ which meant
 key:im on oti oti
 ??
 ```
+
+Searched up the source code again and found `/king_kong_gun.jpg` on the .css file 
