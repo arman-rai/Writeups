@@ -103,4 +103,6 @@ on strings, we got `/wh0l3_c4k3.php`
 on changing the cookie to `CakeForYou`
 I got this `55L9sMDppfRjUzVV11Uac`
 
+Got to a page `/r4nd0m.html`
+and got 2 games where one had a directory to ``
 
