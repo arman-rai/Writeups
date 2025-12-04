@@ -79,4 +79,5 @@ https://github.com/1FreyR/LogPose/blob/master/LogPose.txt
 and I got nothing on fuzzing subdomains and directories heck even files, I think somethings wrong with my machine
 Imma try this after some time
 
-Tried fuzzing again with extensio
+Tried fuzzing again with extensions html, php and txt
+got a directory named `/dr3ssr0s4.html`
