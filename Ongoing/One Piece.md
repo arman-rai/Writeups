@@ -78,3 +78,5 @@ https://github.com/1FreyR/LogPose/blob/master/LogPose.txt
 
 and I got nothing on fuzzing subdomains and directories heck even files, I think somethings wrong with my machine
 Imma try this after some time
+
+Tried fuzzing again with extensio
