@@ -82,7 +82,7 @@ Imma try this after some time
 Tried fuzzing again with extensions html, php and txt
 got a directory named `/dr3ssr0s4.html`
 
-Got some cryptic data:
+Got some cryptic data on .rabbit_hole:
 ```
 6b 65 79 3a 69 6d 20 6f 6e 20 6f 74 69 20 6f 74 69
 m5.J`/{{#F%&!5GI}+n<a
