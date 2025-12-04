@@ -81,4 +81,4 @@ Imma try this after some time
 
 Tried fuzzing again with extensions html, php and txt
 got a directory named `/dr3ssr0s4.html`
-got this obfus
+got this obfuscated image
