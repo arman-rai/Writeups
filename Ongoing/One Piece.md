@@ -131,4 +131,4 @@ M0nk3y_D_7uffy:1_w1ll_b3_th3_p1r@t3_k1ng!
 found a SUID file
 `     5412   4424 -rwsr-xr-x   1 7uffy_vs_T3@ch teach            4526456 Jul 17  2020 /usr/bin/gomugomunooo_king_kobraaa
 `
-and its an executa
+and its an executable file, reverse engineering GOD please
