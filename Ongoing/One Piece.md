@@ -98,4 +98,5 @@ Searched up the source code again and found `/king_kong_gun.jpg` on the .css fil
 and it had a comment : ` Doflamingo is /ko.jpg`
 
 got another image on `/ko.jpg`
-on strings, we got 
+on strings, we got `/wh0l3_c4k3.php`
+
