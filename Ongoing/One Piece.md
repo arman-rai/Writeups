@@ -141,3 +141,6 @@ it basically ran python
 
 and this had /usr/local/bin/less
 as sudo 
+apaprently appending rev shell can get root access
+done
+
