@@ -100,5 +100,7 @@ and it had a comment : ` Doflamingo is /ko.jpg`
 got another image on `/ko.jpg`
 on strings, we got `/wh0l3_c4k3.php`
 
-on changinf
+on changing the cookie to `CakeForYou`
+I got this `55L9sMDppfRjUzVV11Uac`
+
 
