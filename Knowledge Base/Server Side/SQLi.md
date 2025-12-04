@@ -1,4 +1,5 @@
 ## SQL Injection
+https://portswigger.net/web-security/sql-injection/cheat-sheet
 
 - **What:** Attacker injects SQL code into the application’s database queries. This can read, modify, or delete data that the app can access, bypassing normal constraints.
     
