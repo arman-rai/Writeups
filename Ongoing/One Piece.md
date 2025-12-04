@@ -132,3 +132,5 @@ found a SUID file
 `     5412   4424 -rwsr-xr-x   1 7uffy_vs_T3@ch teach            4526456 Jul 17  2020 /usr/bin/gomugomunooo_king_kobraaa
 `
 and its an executable file, reverse engineering GOD please
+No python huhu
+and on strings there are some ./Tools/freeze/flag.py
