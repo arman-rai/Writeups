@@ -33,7 +33,7 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
 ## Attack types
 ### 1. Retrieving hidden data
 - Inject comment to remove conditions:
-    - `…?category=Gifts'--` drops `AND released = 1`, revealing unreleased items. [PortSwigger+1PortSwigger+1](https://portswigger.net/web-security/sql-injection?utm_source=chatgpt.com
+    - `…?category=Gifts'--` drops `AND released = 1`, revealing unreleased items. 
 
 ### 2. UNION-based data exfiltration
 - Use `UNION SELECT` to merge attacker-selected rows.    
