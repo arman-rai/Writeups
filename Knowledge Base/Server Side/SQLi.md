@@ -38,7 +38,7 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
 ### 2. UNION-based data exfiltration
 - Use `UNION SELECT` to merge attacker-selected rows.    
 - Steps:
-    1. Determine column count using `ORDER BY` or `UNION SELECT NULL,...`.
+    1. Determine column count using `ORDER BY` or `UNION SELECT NULL...`.
     2. Find which columns accept strings.
     3. Inject:
         `' UNION SELECT username,password FROM users--` 
@@ -70,7 +70,7 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
     A SQL injection UNION attack exploits vulnerable applications that return SQL query results in their responses by using the `UNION` keyword to combine results from additional queries and extract data from other database tables.
 - **How UNION Works:**  
     `UNION` allows appending results from one or more `SELECT` queries to the original query's result set, e.g.,
-    `SELECT a, b FROM table1' UNION SELECT c, d FROM table2`
+    `SELECT a, b FROM table1 UNION SELECT c, d FROM table2`
 - **Requirements for UNION Injection:**
     1. Both queries must return the same _number_ of columns.
     2. Corresponding columns must have _compatible data types_.
