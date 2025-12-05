@@ -117,9 +117,6 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
 
 These notes cover the **core methods, techniques, and considerations** for both types of SQL injection attacks, useful for understanding vulnerabilities, exploitation strategies, and database-specific nuances.
 
-
-[https://portswigger.net/web-security/sql-injection/cheat-sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
-
 # SQLi / MS SQL Server RCE / Database Exploitation
 
 ---
