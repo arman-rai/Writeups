@@ -415,3 +415,5 @@ Got creds on `/opt`
 
 lol got the flag tara session nai sidhiyexa, this box seems easy
 wow network pivoting?
+` ssh -L 8080:172.17.0.2:8080 aubreanna@10.49.155.242`
+
