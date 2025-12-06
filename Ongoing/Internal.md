@@ -398,10 +398,10 @@ Interesting Finding(s):
 
 ```
 
----
-#### Side thoughts
+ 
 maybe `rss.xml vulnerability wordpress`
-on google search
 https://wpscan.com/vulnerability/5e9804e5-bbd4-4836-a5f0-b4388cc39225/
 https://wpscan.com/vulnerability/95e01006-84e4-4e95-b5d7-68ea7b5aa1a8/
 https://wpscan.com/vulnerability/7f768bcf-ed33-4b22-b432-d1e7f95c1317/
+
+just bruteforced password with username 'admin'
