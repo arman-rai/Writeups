@@ -407,4 +407,4 @@ https://wpscan.com/vulnerability/7f768bcf-ed33-4b22-b432-d1e7f95c1317/
 just bruteforced password with username 'admin'
 got in with `admin:my2boys` also email: `admin@internal.thm`
 
-got this `william:arnold147` on a blog post
+got this `william:arnold147` on a blog post but couldn't SSH 
