@@ -444,3 +444,11 @@ while(!s.isClosed()){
 p.destroy();
 s.close();
 ```
+
+```
+root@internal:~# docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                 NAMES
+7b979a7af778        jenkins/jenkins     "/sbin/tini -- /usr/…"   5 years ago         Up 9 minutes        127.0.0.1:8080->8080/tcp, 50000/tcp   jenkins
+
+```
