@@ -13,7 +13,6 @@
 - [ ] Kiba  
 - [ ] Mustachio  
 - [ ] Deja Vu  
-- [ ] Internal  
 - [ ] Bugged  
 - [ ] Cat Pictures  
 - [ ] Whiterose  
