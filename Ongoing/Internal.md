@@ -412,3 +412,6 @@ Easy RCE from from a .php file on the themes
 
 Got creds on `/opt`
 `aubreanna:bubb13guM!@#123`
+
+lol got the flag tara session nai sidhiyexa, this box seems easy
+	
