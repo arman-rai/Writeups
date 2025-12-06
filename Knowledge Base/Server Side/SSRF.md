@@ -13,7 +13,15 @@
     - **External redirection:** Submit a URL on a legitimate domain that redirects to an internal IP (open redirect bypass).
         
 - **Bypasses/Tricks:**
-    
+## SSRF with blacklist-based input filters
+
+Some applications block input containing hostnames like `127.0.0.1` and `localhost`, or sensitive URLs like `/admin`. In this situation, you can often circumvent the filter using the following techniques:
+
+- Use an alternative IP representation of `127.0.0.1`, such as `2130706433`, `017700000001`, or `127.1`.
+- Register your own domain name that resolves to `127.0.0.1`. You can use `spoofed.burpcollaborator.net` for this purpose.
+- Obfuscate blocked strings using URL encoding or case variation.
+- Provide a URL that you control, which redirects to the target URL. Try using different redirect codes, as well as different protocols for the target URL. For example, switching from an `http:` to `https:` URL during the redirect has been shown to bypass some anti-SSRF filters.
+- 
     - **IP encoding:** `2130706433` (decimal), `017700000001` (octal), or IPv6 (`::ffff:127.0.0.1`) all resolve to 127.0.0.1.
         
     - **Domain hijack:** Register a domain pointing to `127.0.0.1` (e.g. via DNS or burp collaborator) and use it.
