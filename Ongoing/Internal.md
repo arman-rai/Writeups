@@ -420,4 +420,4 @@ wow network pivoting?
 nothing seems to have changed except that I can access `http://localhost:8080`
 maybe fuzzing password again?
 
-This was 
+This was dockerized so no `/var/lib/jenkins/secrets/initialAdminPassword`
