@@ -408,3 +408,4 @@ just bruteforced password with username 'admin'
 got in with `admin:my2boys` also email: `admin@internal.thm`
 
 got this `william:arnold147` on a blog post but couldn't SSH 
+Easy RCE from from a .php file on the themes
