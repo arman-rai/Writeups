@@ -682,7 +682,7 @@ wpscan --url http://10.10.110.100:65000/wordpress --api-token <api-token> -e ap,
 
 wpscan --url http://IP/wordpress -e ap,at,tt,cb,dbe,u,m --plugins-detection aggressive
 
-wpscan --url https://bricks.thm/ -e u --passwords /usr/share/wordlists/rockyou.txt
+wpscan --url https://bricks.thm/ -e u --passwords /opt/rockyou.txt
 
 wpscan --url [example.com](http://example.com) -U admin -P /usr/share/wordlists/rockyou.txt
 ```
