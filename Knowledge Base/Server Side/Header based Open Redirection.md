@@ -1,0 +1,1 @@
+https://learn.snyk.io/lesson/open-redirect/?ecosystem=javascript
