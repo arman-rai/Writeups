@@ -1,5 +1,6 @@
 ## SSRF (Server-Side Request Forgery)
 
+
 - **What:** SSRF tricks the server into making HTTP(S) requests to attacker-chosen URLs. Often the target is an internal resource that the attacker cannot reach directly.
     
 - **Attack examples:**
