@@ -454,11 +454,11 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 | **3. Service Enumeration** | Identify **running services**, versions, banners | • `nmap -sV -sC -p-`<br>• `masscan` (large networks)<br>• Banner grabbing (`nc`, `telnet`, `curl -v`) |
 | **4. Host Enumeration** | Profile **individual systems**: OS, roles, configs | • OS detection (`nmap -O`)<br>• Share scanning (`smbclient`, `enum4linux`)<br>• Web tech (`Wappalyzer`, `whatweb`) |
 
-> ✅ **Always cross-reference findings with scope**—avoid out-of-bounds assets.
+>  **Always cross-reference findings with scope**—avoid out-of-bounds assets.
 
 ---
 
-## 🕵️‍♂️ **OSINT – Critical Targets**
+##  **OSINT – Critical Targets**
 
 | Source | What to Look For | Risk Example |
 |-------|------------------|-------------|
@@ -473,7 +473,7 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 
 ---
 
-## 🌐 **Infrastructure Enumeration Tips**
+##  **Infrastructure Enumeration Tips**
 
 - **DNS is gold**:  
   - Check for **zone transfers** (`dig axfr @ns1.target.com target.com`)  
@@ -485,7 +485,7 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 
 ---
 
-## ⚙️ **Service & Host Enumeration – Pro Tips**
+##  **Service & Host Enumeration – Pro Tips**
 
 | Service | Enumeration Command | Red Flag |
 |-------|--------------------|--------|
@@ -495,13 +495,13 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 | **SSH** | `nmap --script ssh-auth-methods` | Weak ciphers, password auth enabled |
 | **AD** | `ldapsearch -x -H ldap://dc.target.local` | User enumeration, group policies |
 
-> 🔁 **Internal vs. External**:  
+>  **Internal vs. External**:  
 > - **Internal hosts** often have **unpatched/internal-only services** (e.g., Jenkins, Redis, MSSQL).  
 > - Admins assume “not internet-facing = safe” → **prime targets**.
 
 ---
 
-## 🗃️ **Pillaging – Not a Separate Stage, But a Continuous Activity**
+##  **Pillaging – Not a Separate Stage, But a Continuous Activity**
 
 > Pillaging = **post-compromise info gathering** on a host to:
 > - Escalate privileges  
@@ -530,33 +530,21 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 
 ---
 
-## 🔁 **Iterative Nature Reminder**
+##  **Iterative Nature Reminder**
 
 Information Gathering **doesn’t end after recon**:
 1. Initial OSINT → find subdomain → scan → find web app → exploit → gain shell  
 2. **On host**: pillage → find AD creds → enumerate domain → lateral move → new host  
 3. **Repeat**: gather more intel → escalate → exfiltrate
 
-> 🔄 **Each stage feeds the next**.
+>  **Each stage feeds the next**.
 
 ---
 
-## 🛡️ **Ethical & Operational Notes**
+##  **Ethical & Operational Notes**
 
 - **Never assume safety**: Even “internal” services may trigger alarms.
 - **Log noise**: Service scans may flood SIEMs—follow RoE on **evasiveness**.
 - **Respect scope**: If `staging.target.com` isn’t in RoE, **do not test it**—even if found via OSINT.
 
 ---
-
-*— Namura | Cybersecurity Practitioner*  
-*Date: December 27, 2025*
-
----
-
-Would you like this as:
-- A **command reference sheet** (with copy-paste one-liners)?
-- A **workflow diagram** for your notes?
-- Integrated into your **TryHackMe/HTB lab checklist**?
-
-Let me know—I can tailor it to your current exercises (e.g., `spookysec.local` AD enumeration).
