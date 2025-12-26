@@ -155,12 +155,12 @@ Certainly, Namura. Below is a concise, well-organized **Penetration Testing Chea
 
 ## **6. Legal & Ethical Essentials**
 
-- ✅ **Written authorization required** for **all tested assets**.
-- 🔒 **Third-party assets?** Get explicit approval (e.g., from cloud provider or hosting company).
-- 🛡️ **Do not** retain, disclose, or misuse sensitive data (PII, credentials, financial info).
-- 📢 **Client** is responsible for **remediation**—not the tester.
+-  **Written authorization required** for **all tested assets**.
+-  **Third-party assets?** Get explicit approval (e.g., from cloud provider or hosting company).
+-  **Do not** retain, disclose, or misuse sensitive data (PII, credentials, financial info).
+-  **Client** is responsible for **remediation**—not the tester.
 
-> ⚠️ Unauthorized testing = potential criminal liability.
+>  Unauthorized testing = potential criminal liability.
 
 ---
 
@@ -199,9 +199,3 @@ Certainly, Namura. Below is a concise, well-organized **Penetration Testing Chea
 
 ---
 
-*— Namura | Cybersecurity Practitioner*  
-*Last Updated: December 26, 2025*
-
----
-
-Let me know if you'd like this formatted as a printable PDF, Markdown for Obsidian/Notion, or condensed into a single-page visual.
