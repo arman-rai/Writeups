@@ -426,3 +426,137 @@ Once all docs are signed:
 > *“The strength of your pentest begins long before the first scan—it starts with a bulletproof pre-engagement.”*
 
 ---
+
+Certainly, Namura. Below is a **structured, actionable Information Gathering Cheat Sheet**—designed for quick reference during engagements, labs (e.g., TryHackMe, HTB), or CTFs—covering all critical sub-phases, techniques, and operational notes.
+
+---
+
+# **Information Gathering – Cheat Sheet**  
+*— “The more you know, the less you break (and the faster you own).”*
+
+---
+
+##  **Why It Matters**
+- **Foundation of every pentest**: All exploits depend on gathered intel.
+- **Iterative**: Repeated during **Post-Exploitation** and **Lateral Movement**.
+- **Goal**: Map attack surface, identify weak points, and prioritize targets.
+
+>  *“You can’t attack what you don’t understand.”*
+
+---
+
+##  **Four Core Categories**
+
+| Category | Purpose | Key Tools & Techniques |
+|--------|--------|------------------------|
+| **1. OSINT**<br>(Open-Source Intelligence) | Gather **publicly available** info about company, employees, tech stack | • `theHarvester`, `Amass`, `Hunter.io`<br>• GitHub dorks (`filename:.env`, `extension:pub`)<br>• LinkedIn, job posts (tech stack clues)<br>• Wayback Machine, Shodan, Censys |
+| **2. Infrastructure Enumeration** | Map **network topology**: domains, IPs, cloud assets | • DNS recon (`dig`, `nslookup`, `dnsrecon`)<br>• Subdomain brute-forcing (`ffuf`, `gobuster`, `Sublist3r`)<br>• Cloud enumeration (`aws-recon`, `Azure CLI`, `gcp-scanner`) |
+| **3. Service Enumeration** | Identify **running services**, versions, banners | • `nmap -sV -sC -p-`<br>• `masscan` (large networks)<br>• Banner grabbing (`nc`, `telnet`, `curl -v`) |
+| **4. Host Enumeration** | Profile **individual systems**: OS, roles, configs | • OS detection (`nmap -O`)<br>• Share scanning (`smbclient`, `enum4linux`)<br>• Web tech (`Wappalyzer`, `whatweb`) |
+
+> ✅ **Always cross-reference findings with scope**—avoid out-of-bounds assets.
+
+---
+
+## 🕵️‍♂️ **OSINT – Critical Targets**
+
+| Source | What to Look For | Risk Example |
+|-------|------------------|-------------|
+| **GitHub/GitLab** | Hardcoded secrets (API keys, passwords, SSH keys) | `grep -r "password" .` in public repos |
+| **Job Postings** | Tech stack (e.g., “experience with Jenkins v2.235”) | → Exploit known CVEs in that version |
+| **Company Website** | Subdomains (`dev.`, `staging.`, `admin.`), email formats | → Username patterns for spraying |
+| **Shodan/Censys** | Exposed services (FTP, RDP, databases) | Anonymous FTP with sensitive files |
+| **Pastebin/Dumps** | Leaked credentials, configs | Combine with password spraying |
+
+> ⚠️ **Found live credentials/keys?**  
+> → **Pause** and follow **RoE critical finding protocol** (notify client immediately).
+
+---
+
+## 🌐 **Infrastructure Enumeration Tips**
+
+- **DNS is gold**:  
+  - Check for **zone transfers** (`dig axfr @ns1.target.com target.com`)  
+  - Enumerate **MX, TXT, SPF** records (may reveal cloud providers, SPF rules)
+- **Cloud misconfigs**:  
+  - S3 buckets (`aws s3 ls s3://company-backup --no-sign-request`)  
+  - Azure blob storage (`azcopy` with public URLs)
+- **Compare discovered assets vs. client-provided scope** → May reveal **shadow IT**
+
+---
+
+## ⚙️ **Service & Host Enumeration – Pro Tips**
+
+| Service | Enumeration Command | Red Flag |
+|-------|--------------------|--------|
+| **SMB** | `crackmapexec smb 10.10.10.0/24` | SMBv1, null sessions, writable shares |
+| **Web** | `gobuster dir -u http://target -w /wordlists/common.txt` | `/backup`, `/admin`, `.git/` |
+| **FTP** | `ftp target.com` → try `anonymous:anonymous` | Anonymous login + file listing |
+| **SSH** | `nmap --script ssh-auth-methods` | Weak ciphers, password auth enabled |
+| **AD** | `ldapsearch -x -H ldap://dc.target.local` | User enumeration, group policies |
+
+> 🔁 **Internal vs. External**:  
+> - **Internal hosts** often have **unpatched/internal-only services** (e.g., Jenkins, Redis, MSSQL).  
+> - Admins assume “not internet-facing = safe” → **prime targets**.
+
+---
+
+## 🗃️ **Pillaging – Not a Separate Stage, But a Continuous Activity**
+
+> Pillaging = **post-compromise info gathering** on a host to:
+> - Escalate privileges  
+> - Move laterally  
+> - Prove business impact  
+
+### **Where to Look (Post-Exploitation)**
+
+| System | Key Locations |
+|-------|--------------|
+| **Linux** | `/etc/passwd`, `/home/*/.ssh/`, `/var/backups/`, `~/.bash_history`, cron jobs |
+| **Windows** | `C:\Users\`, `%APPDATA%`, Registry (`HKLM\SOFTWARE`), PowerShell history |
+| **Both** | Browser history, config files, password managers, notes.txt, spreadsheets |
+
+### **Common Pillaged Data**
+- Usernames → for **password spraying**
+- Passwords/hashes → for **pass-the-hash**, **Kerberoasting**
+- SSH keys → for **lateral SSH access**
+- DB credentials → for **data exfiltration**
+
+> 📌 Covered in:  
+> - **Privilege Escalation** modules (Linux/Windows)  
+> - **Active Directory Enumeration**  
+> - **Password Attacks**  
+> - **Network Enumeration**  
+
+---
+
+## 🔁 **Iterative Nature Reminder**
+
+Information Gathering **doesn’t end after recon**:
+1. Initial OSINT → find subdomain → scan → find web app → exploit → gain shell  
+2. **On host**: pillage → find AD creds → enumerate domain → lateral move → new host  
+3. **Repeat**: gather more intel → escalate → exfiltrate
+
+> 🔄 **Each stage feeds the next**.
+
+---
+
+## 🛡️ **Ethical & Operational Notes**
+
+- **Never assume safety**: Even “internal” services may trigger alarms.
+- **Log noise**: Service scans may flood SIEMs—follow RoE on **evasiveness**.
+- **Respect scope**: If `staging.target.com` isn’t in RoE, **do not test it**—even if found via OSINT.
+
+---
+
+*— Namura | Cybersecurity Practitioner*  
+*Date: December 27, 2025*
+
+---
+
+Would you like this as:
+- A **command reference sheet** (with copy-paste one-liners)?
+- A **workflow diagram** for your notes?
+- Integrated into your **TryHackMe/HTB lab checklist**?
+
+Let me know—I can tailor it to your current exercises (e.g., `spookysec.local` AD enumeration).
