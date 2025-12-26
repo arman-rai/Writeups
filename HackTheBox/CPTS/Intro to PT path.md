@@ -89,3 +89,119 @@ Here are the core lessons condensed into memorable hooks:
 
 ---
 
+Certainly, Namura. Below is a concise, well-organized **Penetration Testing Cheat Sheet** that distills the essential concepts, distinctions, and best practices from the full document—ideal for quick reference during engagements, study, or client discussions.
+
+---
+
+## **1. What Is a Penetration Test?**
+- **Authorized**, **goal-oriented** simulation of real-world attacks.
+- Validates **exploitability** of vulnerabilities—not just presence.
+- Evaluates impact on **CIA Triad**:  
+  - **C**onfidentiality  
+  - **I**ntegrity  
+  - **A**vailability  
+- Provides **remediation guidance**—**not** fixes.
+
+> 📌 *Delivers a **point-in-time snapshot**—not continuous monitoring.*
+
+---
+
+## **2. Key Testing Types**
+
+| Type | Info Given | Use Case | Duration |
+|------|-----------|--------|--------|
+| **Black Box** | Target only (e.g., IP/domain) | External attacker simulation | Long (full recon needed) |
+| **Grey Box** | Partial access (e.g., user creds, subnets) | Balanced realism & efficiency | Moderate |
+| **White Box** | Full access (source code, configs, admin) | Deep internal audit / code review | Shorter, more thorough |
+| **Red Team** | Varies + physical/social | Test detection & response | Multi-phase, stealth-focused |
+| **Purple Team** | Full collaboration with defenders | Improve blue team capabilities | Iterative, feedback-driven |
+
+---
+
+## **3. Testing Perspective**
+
+- **External**: From public internet → test perimeter defenses.
+- **Internal**: From inside network → simulate post-breach or insider threat.  
+  → May require on-site access for air-gapped systems.
+
+---
+
+## **4. Pentest vs. Other Assessments**
+
+| Assessment | Method | Goal |
+|-----------|--------|------|
+| **Vulnerability Scan** | Automated only (Nessus, OpenVAS) | Find known CVEs/config issues |
+| **Penetration Test** | **Manual + automated** | **Exploit & validate** real risk |
+| **Red Team** | Adversary simulation | Achieve objective (e.g., domain admin) |
+| **Purple Team** | Red + Blue collaboration | Improve detection/response |
+
+---
+
+## **5. Common Testing Domains**
+
+- Network (Firewalls, Switches)
+- Web & Mobile Applications
+- APIs & Thick Clients
+- Cloud (AWS, Azure, GCP)
+- Source Code (Secure Code Review)
+- Physical Security
+- Human Layer (Phishing, Social Eng.)
+- IoT / Embedded Systems
+- Security Policies & Configurations
+
+>  Often **combined** in enterprise engagements.
+
+---
+
+## **6. Legal & Ethical Essentials**
+
+- ✅ **Written authorization required** for **all tested assets**.
+- 🔒 **Third-party assets?** Get explicit approval (e.g., from cloud provider or hosting company).
+- 🛡️ **Do not** retain, disclose, or misuse sensitive data (PII, credentials, financial info).
+- 📢 **Client** is responsible for **remediation**—not the tester.
+
+> ⚠️ Unauthorized testing = potential criminal liability.
+
+---
+
+## **7. Risk Management Context**
+
+- Pentesting supports **risk identification & mitigation**.
+- **Inherent risk** remains even after controls.
+- Risk treatment options:  
+  - **Mitigate** (patch, harden)  
+  - **Accept** (documented decision)  
+  - **Transfer** (e.g., cyber insurance)  
+  - **Avoid** (discontinue service)
+
+---
+
+## **8. Privacy & Data Handling**
+
+- If you access PII, credentials, or payment data:
+  - **Minimize exposure**
+  - **Do not log** unnecessarily
+  - **Recommend immediate remediation** (e.g., password resets, encryption)
+- Respect **employee privacy expectations**—management may choose to notify staff.
+
+---
+
+## **9. Pro Tips for Execution**
+
+- **Scoping is critical**: Confirm IPs, domains, cloud accounts, and third-party dependencies.
+- **Start stealthy**, escalate noise if testing detection capabilities.
+- **Document everything**: Steps, commands, proofs, and impact.
+- **Tailor reporting**: Technical depth for engineers, risk context for leadership.
+
+---
+
+> *“A pentest doesn’t make you secure—it shows you where you’re not.”*
+
+---
+
+*— Namura | Cybersecurity Practitioner*  
+*Last Updated: December 26, 2025*
+
+---
+
+Let me know if you'd like this formatted as a printable PDF, Markdown for Obsidian/Notion, or condensed into a single-page visual.
