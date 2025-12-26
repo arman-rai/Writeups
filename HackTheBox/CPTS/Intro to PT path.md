@@ -426,10 +426,3 @@ Once all docs are signed:
 > *“The strength of your pentest begins long before the first scan—it starts with a bulletproof pre-engagement.”*
 
 ---
-
-*— Namura | Cybersecurity Practitioner*  
-*Date: December 26, 2025*
-
----
-
-Would you like this as a **fillable PDF template**, **Notion database**, or integrated with your **n8n automation workflow** for client onboarding? I can also generate a **checklist version** for your daily use.
