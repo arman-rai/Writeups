@@ -293,3 +293,147 @@ Post-Engagement
 > Arrows indicate **iteration**—common in real engagements.
 
 ---
+
+Certainly, Namura. Below is a **structured, concise Pre-Engagement Cheat Sheet** that distills all critical components—legal, procedural, and operational—into a clear, actionable reference for penetration testers.
+
+---
+
+# **Pre-Engagement Cheat Sheet**  
+*— Laying the Legal & Operational Foundation for a Safe, Authorized Pentest*
+
+---
+
+## 🔐 **1. Legal Prerequisites**
+> **Never begin without these.**
+
+| Document | Purpose | Timing |
+|--------|--------|--------|
+| **NDA (Non-Disclosure Agreement)** | Legally binds both parties to confidentiality | After initial contact, **before** sharing sensitive info |
+| **Contract / Scope of Work (SoW)** | Formal agreement on deliverables, scope, pricing | Finalized in pre-engagement meeting |
+| **Rules of Engagement (RoE)** | Technical & procedural boundaries of testing | Signed **before kick-off** |
+| **Contractor’s Agreement** | Required **only for physical assessments**; proves lawful intent if detained | Before on-site testing |
+
+> 📌 **NDA Types**:
+> - **Unilateral**: One party bound (rare in pentesting).
+> - **Bilateral**: **Most common**—both parties confidential.
+> - **Multilateral**: >2 parties (e.g., consortium testing).
+
+---
+
+## 👥 **2. Authorization & Stakeholders**
+> **Only authorized personnel can legally commission a pentest.**
+
+✅ **Typical Authorized Roles**:
+- CISO, CTO, CIO, CSO, CRO  
+- CEO (in smaller orgs)  
+- VP/Director of IT, InfoSec, or Internal Audit  
+
+> ⚠️ **Never accept engagement from**:
+> - Regular employees without written delegation  
+> - Unauthorized third parties  
+
+> 📌 **Confirm**:  
+> - Primary & secondary **technical POCs**  
+> - **Emergency contacts** (for critical findings)  
+> - **Signatory authority** for contracts
+
+---
+
+## 📋 **3. Pre-Engagement Workflow**
+
+### **Step 1: Scoping Questionnaire** *(Sent after NDA)*
+Gather key details:
+
+| Category | Sample Questions |
+|--------|------------------|
+| **Assessment Type** | External/Internal PT? Web app? Red team? Wireless? Social engineering? |
+| **Scope Size** | # IPs/CIDRs? Domains? Web apps? Roles (user/admin)? |
+| **Testing Conditions** | Black/Grey/White box? Evasive (stealth) or non-evasive? |
+| **Constraints** | Out-of-scope systems? Business-critical assets to avoid? |
+| **Third Parties** | Cloud (AWS/Azure)? Hosting providers? → **Require written approval** |
+| **Objectives** | “Access payroll DB” or “Obtain domain admin”? |
+
+> 💡 Use responses to estimate **time, cost, and team size**.
+
+---
+
+### **Step 2: Pre-Engagement Meeting**
+- Review questionnaire responses  
+- Clarify goals, scope, and constraints  
+- Explain pentest types & **recommend best fit**  
+- Discuss **risks**: log flooding, account lockouts, system instability  
+- Finalize **SoW & RoE**
+
+> 🎯 **Key Contract Checklist**:
+> - ☐ Goals & success criteria  
+> - ☐ In-scope assets (IPs, URLs, CIDRs)  
+> - ☐ Testing window (dates + hours)  
+> - ☐ Methodologies (OWASP, PTES, OSSTMM)  
+> - ☐ Third-party permissions  
+> - ☐ Data handling (PCI, HIPAA, encryption)  
+> - ☐ Reporting format + audience (executive vs. technical)  
+> - ☐ Payment terms
+
+---
+
+### **Step 3: Rules of Engagement (RoE) – Core Elements**
+Document must include:
+
+| Section | Details |
+|-------|--------|
+| **Scope** | Exact IPs, domains, URLs, subnets |
+| **Testing Window** | Start/end dates + permitted hours (e.g., “Mon–Fri, 6 PM–6 AM”) |
+| **Testing Type** | External/Internal, Black/Grey/White box |
+| **Prohibited Actions** | No DoS, no production DB writes, no phishing execs (if excluded) |
+| **Incident Protocol** | How/when to report critical flaws (e.g., unauth RCE) |
+| **Communication** | Primary channels (Slack, email, phone) |
+| **Retesting** | Timeline for validation after fixes |
+| **Liability Disclaimer** | “Tester not liable for system damage due to pre-existing instability” |
+
+> 📌 **Appendix**: Attach approved asset list & third-party consents.
+
+---
+
+### **Step 4: Kick-Off Meeting**
+- Attendees: Client POCs, IT/security team, pentesters, PM  
+- Confirm:  
+  - Testing timeline & boundaries  
+  - **Critical finding protocol**: Pause test → notify emergency contact  
+  - **No DoS** (standard unless explicitly approved)  
+  - Expected noise (logs, alerts, failed logins)  
+- **Educate non-technical stakeholders** in plain language  
+- Answer final questions
+
+> 💡 For **physical tests**: Distribute Contractor’s Agreement with building/floor access details + notarization.
+
+---
+
+## ⚠️ **Critical Reminders**
+
+- **Never test without written authorization** → violates Computer Misuse Act (or local equivalent).  
+- **Third-party infrastructure?** → Client must provide **written provider consent** (e.g., AWS allows testing under [AWS Pen Test Policy](https://aws.amazon.com/security/penetration-testing/), but others may not).  
+- **Assume client is new to pentesting** → Over-communicate, avoid jargon.  
+- **Document everything** → Your legal protection.  
+- **Have a lawyer review templates** → Especially NDAs, SoW, and liability clauses.
+
+---
+
+##  **Post-Pre-Engagement: Ready to Test**
+Once all docs are signed:
+- Prepare VMs, VPS, tooling  
+- Import scope into recon tools (e.g., `nuclei`, `amass`, `nmap`)  
+- Set up secure comms (encrypted email, Signal, secure portal)  
+- Confirm emergency contact availability
+
+---
+
+> *“The strength of your pentest begins long before the first scan—it starts with a bulletproof pre-engagement.”*
+
+---
+
+*— Namura | Cybersecurity Practitioner*  
+*Date: December 26, 2025*
+
+---
+
+Would you like this as a **fillable PDF template**, **Notion database**, or integrated with your **n8n automation workflow** for client onboarding? I can also generate a **checklist version** for your daily use.
