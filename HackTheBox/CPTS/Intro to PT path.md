@@ -210,3 +210,86 @@ Certainly, Namura. Below is a concise, well-organized **Penetration Testing Chea
 
 ---
 
+Certainly, Namura. Below is a **concise, structured cheat sheet** that captures the core concepts, stages, and key actions of the **Penetration Testing Process**, distilled for quick reference, study, or field use.
+
+---
+
+# **Penetration Testing Process – Cheat Sheet**
+
+> *“Not a rigid recipe—**a flexible, iterative framework** guided by findings.”*
+
+---
+
+## **Core Principles**
+- **Goal-driven**: Each test aims to achieve a pre-defined objective (e.g., data access, domain admin).
+- **Iterative & adaptive**: Stages often loop (e.g., lateral movement → post-exploitation → more lateral movement).
+- **Client-specific**: No two engagements are identical—process must be tailored.
+- **Evidence-based**: Every action builds on prior discovery or exploitation.
+
+---
+
+## **The 8 Stages of Penetration Testing**
+
+| Stage | Purpose | Key Activities |
+|------|--------|----------------|
+| **1. Pre-Engagement** | Define scope, rules, and expectations | • Sign NDA<br>• Agree on **goals, scope, timing**<br>• Establish **Rules of Engagement (RoE)**<br>• Confirm asset ownership & third-party permissions |
+| **2. Information Gathering** | Build situational awareness | • Passive/active recon (DNS, WHOIS, Shodan)<br>• Identify tech stack (Wappalyzer, nmap)<br>• Map network topology & services |
+| **3. Vulnerability Assessment** | Identify potential weaknesses | • Scan with tools (Nmap, Nikto, Nessus)<br>• Manual review of logic flaws<br>• Cross-reference versions with CVEs/ExploitDB |
+| **4. Exploitation** | Gain initial access | • Execute exploits (Metasploit, custom scripts)<br>• Abuse misconfigurations or logic flaws<br>• Verify access (e.g., reverse shell, RCE) |
+| **5. Post-Exploitation** | Stabilize access & escalate | • Maintain persistence (backdoors, cron jobs)<br>• Enumerate local system (users, files, creds)<br>• **Privilege escalation** (kernel exploits, sudo misconfigs)<br>• **Pillaging**: extract sensitive data |
+| **6. Lateral Movement** | Expand access across network | • Pass-the-hash, Kerberoasting, RDP abuse<br>• Reuse credentials from pillaging<br>• Pivot via compromised hosts (SSH, proxychains)<br>• Target high-value systems (DBs, DCs) |
+| **7. Proof-of-Concept (PoC)** | Demonstrate & document impact | • Reconstruct attack chain step-by-step<br>• Provide **reproducible evidence** (screenshots, scripts)<br>• Show business impact (e.g., “We accessed payroll DB”) |
+| **8. Post-Engagement** | Deliver, debrief, and clean up | • Write **technical + executive reports**<br>• Hold **report walkthrough**<br>• **Remove all traces** (tools, accounts, logs)<br>• Archive data per policy<br>• Optional: **Retest** after remediation |
+
+---
+
+## **Critical Notes**
+
+ **Flexibility > Rigidity**  
+- Stages are **not linear**—expect to cycle between Post-Exploitation and Lateral Movement repeatedly.
+
+**Documentation = Value**  
+- Poor PoC = client can’t fix it.  
+- Automate repro steps when possible (e.g., Python script for exploit).
+
+ **Scope is Sacred**  
+- Never test outside agreed assets.  
+- Confirm cloud/third-party permissions (e.g., AWS allows some testing, but not all).
+
+ **Ethical Cleanup**  
+- Remove shells, accounts, files, and logs.  
+- Leave systems as you found them—**no backdoors**.
+
+---
+
+## **Study & Skill Progression Tip**
+Master stages **sequentially but iteratively**:
+1. Start with **recon & scanning** (Info Gathering + Vuln Assessment)
+2. Practice **exploits in labs** (HTB, TryHackMe)
+3. Focus on **Linux/Windows privilege escalation**
+4. Learn **AD attacks** (e.g., Kerberoasting, ACL abuse)
+5. Simulate **full attack chains** (initial access → domain admin)
+
+>  Each module reinforces the next—gaps in fundamentals (e.g., networking, scripting) will hinder advanced stages.
+
+---
+
+## **Visual Flow (Simplified)**
+
+```
+Pre-Engagement  
+     ↓  
+Information Gathering  
+     ↓  
+Vulnerability Assessment  
+     ↓  
+Exploitation → [Post-Exploitation ↔ Lateral Movement] ↻  
+     ↓  
+Proof-of-Concept  
+     ↓  
+Post-Engagement
+```
+
+> Arrows indicate **iteration**—common in real engagements.
+
+---
