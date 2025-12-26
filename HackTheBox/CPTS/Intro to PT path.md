@@ -294,16 +294,12 @@ Post-Engagement
 
 ---
 
-Certainly, Namura. Below is a **structured, concise Pre-Engagement Cheat Sheet** that distills all critical components—legal, procedural, and operational—into a clear, actionable reference for penetration testers.
-
----
-
 # **Pre-Engagement Cheat Sheet**  
 *— Laying the Legal & Operational Foundation for a Safe, Authorized Pentest*
 
 ---
 
-## 🔐 **1. Legal Prerequisites**
+##  **1. Legal Prerequisites**
 > **Never begin without these.**
 
 | Document | Purpose | Timing |
@@ -313,33 +309,33 @@ Certainly, Namura. Below is a **structured, concise Pre-Engagement Cheat Sheet**
 | **Rules of Engagement (RoE)** | Technical & procedural boundaries of testing | Signed **before kick-off** |
 | **Contractor’s Agreement** | Required **only for physical assessments**; proves lawful intent if detained | Before on-site testing |
 
-> 📌 **NDA Types**:
+>  **NDA Types**:
 > - **Unilateral**: One party bound (rare in pentesting).
 > - **Bilateral**: **Most common**—both parties confidential.
 > - **Multilateral**: >2 parties (e.g., consortium testing).
 
 ---
 
-## 👥 **2. Authorization & Stakeholders**
+##  **2. Authorization & Stakeholders**
 > **Only authorized personnel can legally commission a pentest.**
 
-✅ **Typical Authorized Roles**:
+ **Typical Authorized Roles**:
 - CISO, CTO, CIO, CSO, CRO  
 - CEO (in smaller orgs)  
 - VP/Director of IT, InfoSec, or Internal Audit  
 
-> ⚠️ **Never accept engagement from**:
+> **Never accept engagement from**:
 > - Regular employees without written delegation  
 > - Unauthorized third parties  
 
-> 📌 **Confirm**:  
+>  **Confirm**:  
 > - Primary & secondary **technical POCs**  
 > - **Emergency contacts** (for critical findings)  
 > - **Signatory authority** for contracts
 
 ---
 
-## 📋 **3. Pre-Engagement Workflow**
+##  **3. Pre-Engagement Workflow**
 
 ### **Step 1: Scoping Questionnaire** *(Sent after NDA)*
 Gather key details:
@@ -353,7 +349,7 @@ Gather key details:
 | **Third Parties** | Cloud (AWS/Azure)? Hosting providers? → **Require written approval** |
 | **Objectives** | “Access payroll DB” or “Obtain domain admin”? |
 
-> 💡 Use responses to estimate **time, cost, and team size**.
+>  Use responses to estimate **time, cost, and team size**.
 
 ---
 
@@ -364,7 +360,7 @@ Gather key details:
 - Discuss **risks**: log flooding, account lockouts, system instability  
 - Finalize **SoW & RoE**
 
-> 🎯 **Key Contract Checklist**:
+>  **Key Contract Checklist**:
 > - ☐ Goals & success criteria  
 > - ☐ In-scope assets (IPs, URLs, CIDRs)  
 > - ☐ Testing window (dates + hours)  
@@ -390,7 +386,7 @@ Document must include:
 | **Retesting** | Timeline for validation after fixes |
 | **Liability Disclaimer** | “Tester not liable for system damage due to pre-existing instability” |
 
-> 📌 **Appendix**: Attach approved asset list & third-party consents.
+>  **Appendix**: Attach approved asset list & third-party consents.
 
 ---
 
@@ -404,11 +400,11 @@ Document must include:
 - **Educate non-technical stakeholders** in plain language  
 - Answer final questions
 
-> 💡 For **physical tests**: Distribute Contractor’s Agreement with building/floor access details + notarization.
+>  For **physical tests**: Distribute Contractor’s Agreement with building/floor access details + notarization.
 
 ---
 
-## ⚠️ **Critical Reminders**
+## **Critical Reminders**
 
 - **Never test without written authorization** → violates Computer Misuse Act (or local equivalent).  
 - **Third-party infrastructure?** → Client must provide **written provider consent** (e.g., AWS allows testing under [AWS Pen Test Policy](https://aws.amazon.com/security/penetration-testing/), but others may not).  
