@@ -549,10 +549,6 @@ Information Gathering **doesn’t end after recon**:
 
 ---
 
-Certainly, Namura. Below is a formal, concise, and well-structured **Vulnerability Assessment Cheat Sheet**, free of emojis and tailored to your preference for clarity and precision.
-
----
-
 # **Vulnerability Assessment – Reference Guide**
 
 ## **Purpose and Definition**  
@@ -635,10 +631,3 @@ This feedback loop ensures thorough coverage and reduces false negatives.
 - **Align testing with RoE**: If evasive techniques are required, avoid noisy scans; favor manual or low-and-slow probing.
 
 ---
-
-*— Namura | Cybersecurity Practitioner*  
-*Date: December 27, 2025*  
-
---- 
-
-Let me know if you would like this formatted as a plain-text reference card, integrated into a report template, or paired with command-line examples for common vulnerability validation tasks.
