@@ -867,4 +867,171 @@ A well-constructed PoC transforms abstract risk into concrete understanding. It 
 
 ---
 
+## **Post-Engagement – Notes**
+
+**Purpose of the Stage**  
+Post-Engagement encompasses all activities required to formally conclude a penetration test after technical operations have ended. These steps ensure legal, ethical, and professional closure of the engagement, including cleanup, documentation, client communication, and data handling. While technical execution demonstrates capability, post-engagement activities reflect professionalism and accountability.
+
+---
+
+**Cleanup**  
+- Remove all artifacts introduced during testing: uploaded tools, scripts, temporary accounts, scheduled tasks, registry entries, etc.  
+- Revert any minor configuration changes made for testing purposes.  
+- If cleanup is not possible (e.g., lost access), document the residual artifact in the report appendix and notify the client.  
+- Maintain detailed activity logs to facilitate accurate and complete cleanup.
+
+---
+
+**Documentation and Reporting**  
+Prior to disconnecting or signaling the end of testing, ensure all evidence is collected and sanitized:  
+- Retain command outputs, screenshots, logs, and scan results relevant to findings.  
+- **Do not retain** sensitive data such as PII, credentials, or confidential business documents beyond what is necessary for validation.  
+
+The final report must include:  
+- **Executive Summary**: Non-technical overview of risk posture, key findings, and strategic implications.  
+- **Attack Chain Narrative**: Step-by-step walkthrough of exploitation paths (e.g., external entry → privilege escalation → domain compromise).  
+- **Detailed Findings**: For each issue—risk rating, impact, reproduction steps, remediation guidance, and authoritative references (e.g., OWASP, NIST, CVE).  
+- **Prioritized Recommendations**: Near-term (critical fixes), medium-term (hardening), and long-term (architectural or policy improvements).  
+- **Appendices**:  
+  - In-scope assets  
+  - OSINT sources (if used)  
+  - Compromised hosts/accounts  
+  - Files transferred or accounts created  
+  - Active Directory analysis (if applicable)  
+  - Scan data and supplementary evidence  
+
+Deliver an initial **DRAFT** report for client review.
+
+---
+
+**Report Review Meeting**  
+- Conduct a walkthrough with client stakeholders (technical and managerial).  
+- Focus on medium- to high-severity findings; low-risk items may be acknowledged without deep discussion.  
+- Address client questions, clarify technical details, and incorporate feedback.  
+- Avoid reading the report verbatim; instead, explain context, methodology, and business impact.
+
+---
+
+**Deliverable Acceptance**  
+- The **Scope of Work** must define acceptance criteria.  
+- After incorporating client feedback, issue a **FINAL** report.  
+- Some clients (e.g., for compliance audits) require a FINAL designation; maintain consistency across engagements.
+
+---
+
+**Post-Remediation Testing**  
+- Typically included in the original engagement scope.  
+- Re-test remediated findings to verify fixes are effective and complete.  
+- Deliver a **Post-Remediation Report** with a clear status table:  
+  - Finding ID, Severity, Title, Remediation Status (Remediated / Not Remediated)  
+  - Evidence of validation (e.g., failed exploit attempt, updated scan output)  
+- Do not assume fixes are sufficient—validate each one.
+
+---
+
+**Role of the Pentester in Remediation**  
+- **Do not perform remediation**: No code fixes, patching, or configuration changes.  
+- Maintain independence as an impartial assessor.  
+- Provide **general** remediation guidance (e.g., “implement input validation” for SQLi), **not specific code or commands**.  
+- Clarify findings upon request but avoid direct involvement in implementation.
+
+---
+
+**Data Retention and Secure Handling**  
+- Retain engagement data (logs, evidence, reports) for a defined period per contractual and legal obligations.  
+- Store all retained data in **encrypted, access-controlled** environments owned by the firm.  
+- Wipe all tester systems (local machines, VMs) of client data after the engagement.  
+- Create a new, isolated VM for any post-remediation activities.  
+- Follow regulatory guidance (e.g., PCI DSS recommends retaining evidence for potential audit requests).
+
+---
+
+**Close Out**  
+Final steps to conclude the engagement:  
+- Confirm secure storage or destruction of all client data.  
+- Issue final invoice and collect payment.  
+- Conduct a **client satisfaction survey** to gather feedback on communication, professionalism, and technical quality.  
+- Use feedback for continuous improvement—both technical and interpersonal.  
+
+**Ending Note**  
+The technical exploitation may end with a shell or a flag, but the true value of a penetration test is realized in how findings are communicated, validated, and resolved. Professionalism, clarity, and integrity during Post-Engagement often leave a more lasting impression than the sophistication of the attack chain. Always prioritize trust, transparency, and client enablement over technical theatrics.
+
+---
+
+## **Practicing Penetration Testing – Notes**
+
+**Purpose of the Stage**  
+Technical knowledge alone is insufficient. Mastery in penetration testing requires consistent, deliberate practice that integrates **hands-on exploitation**, **methodical documentation**, and **professional communication**. Real-world effectiveness stems from the ability to reliably execute TTPs, clearly convey findings, and adapt to diverse client environments.
+
+---
+
+**The Dual Competency Requirement**  
+1. **Technical Proficiency**:  
+   - Execute reconnaissance, exploitation, post-exploitation, lateral movement, and reporting workflows confidently.  
+   - Understand not just *how* to exploit, but *why* it works and what it reveals about systemic weaknesses.  
+
+2. **Communication Excellence**:  
+   - Write clear, actionable reports for both technical teams and executive stakeholders.  
+   - Conduct professional client interactions: kickoff calls, scoping discussions, and report review meetings.  
+   - Defend findings with evidence and articulate remediation rationale persuasively.
+
+---
+
+**Structured Practice Framework**
+
+**1. Modules**  
+- Select **2 modules** aligned with your interests or skill gaps.  
+- Follow this cycle:  
+  1. Read the module theory.  
+  2. Complete embedded exercises.  
+  3. Re-attempt exercises from scratch.  
+  4. Take detailed notes during replay.  
+  5. Produce **technical documentation** (reproduction steps, commands, evidence).  
+  6. Produce **non-technical documentation** (executive summary snippets, risk context).  
+- Focus on creating “client-ready” artifacts to reinforce reporting discipline.
+
+**2. Retired Machines**  
+- Complete **3 retired machines** (e.g., 2 easy, 1 medium) that reflect module topics.  
+- Process:  
+  1. Achieve user and root access independently.  
+  2. Draft technical and executive documentation.  
+  3. Compare against community or official write-ups (e.g., HTB VIP, Ippsec videos).  
+  4. Identify missed steps or insights.  
+  5. Revise documentation to include new learnings.  
+- This builds completeness, accuracy, and adaptability in analysis.
+
+**3. Active Machines**  
+- Tackle **5 active machines** (2 easy, 2 medium, 1 hard) under true black-box conditions.  
+- No public write-ups exist—rely solely on your skills.  
+- After compromise:  
+  1. Document findings thoroughly.  
+  2. Submit documentation for **proofreading** by both technical and non-technical reviewers.  
+- Use feedback to refine clarity, conciseness, and audience appropriateness.
+
+**4. Pro Labs / Endgames**  
+- Engage in **1 multi-host enterprise simulation** (e.g., HTB Pro Lab, Endgame).  
+- Focus shifts from single-system exploitation to **end-to-end attack chain development**:  
+  - Foothold → privilege escalation → lateral movement → domain compromise.  
+- Documentation must capture **inter-system dependencies**, credential reuse, and network-wide impact.  
+- Practice writing cohesive narratives that show how multiple vulnerabilities combine into systemic risk.
+
+---
+
+**Soft Skills Integration**  
+- **Simulate client interactions**: Role-play kickoff calls and report reviews with peers.  
+- **Anticipate objections**: Prepare justifications for risk ratings and remediation advice.  
+- **Practice brevity and precision**: Executive summaries should convey urgency without technical overload.
+
+---
+
+**Mindset and Continuous Improvement**  
+- **Avoid knowledge gaps**: Follow learning paths sequentially when foundational.  
+- **Revisit completed content**: Re-examine old modules through the lens of the full penetration testing lifecycle.  
+- **Stay current**: New vulnerabilities, tools, and attacker TTPs emerge constantly—continuous learning is non-negotiable.  
+- **Balance intensity and sustainability**: Take breaks, reflect, and maintain curiosity.  
+
+**Ending Note**  
+Penetration testing is both a technical discipline and a consulting profession. The most impactful testers are those who not only “pop shells” but also **enable change** through clarity, credibility, and collaboration. Excellence is built through repetition, reflection, and a commitment to delivering value—not just exploits. Never stop practicing, never stop learning, and always strive to make your client more secure than you found them.
+
+---
 
