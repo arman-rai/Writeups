@@ -468,7 +468,7 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 | **Shodan/Censys** | Exposed services (FTP, RDP, databases) | Anonymous FTP with sensitive files |
 | **Pastebin/Dumps** | Leaked credentials, configs | Combine with password spraying |
 
-> ⚠️ **Found live credentials/keys?**  
+>  **Found live credentials/keys?**  
 > → **Pause** and follow **RoE critical finding protocol** (notify client immediately).
 
 ---
@@ -522,7 +522,7 @@ Certainly, Namura. Below is a **structured, actionable Information Gathering Che
 - SSH keys → for **lateral SSH access**
 - DB credentials → for **data exfiltration**
 
-> 📌 Covered in:  
+>  Covered in:  
 > - **Privilege Escalation** modules (Linux/Windows)  
 > - **Active Directory Enumeration**  
 > - **Password Attacks**  
@@ -548,3 +548,4 @@ Information Gathering **doesn’t end after recon**:
 - **Respect scope**: If `staging.target.com` isn’t in RoE, **do not test it**—even if found via OSINT.
 
 ---
+
