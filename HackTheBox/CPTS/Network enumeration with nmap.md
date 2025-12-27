@@ -12,3 +12,6 @@ Misconfigurations—not just outdated software—are prime sources of vulnerabil
 Investing time to learn how a service works (purpose, communication patterns, default behaviors) saves far more time than random tool spraying.  
 Manual enumeration is irreplaceable: automated tools may miss filtered, slow-responding, or non-standard services due to timeouts or assumptions.  
 A port marked “closed” by a scanner might still be open but unresponsive—manual verification prevents false negatives that block progress.
+
+---
+
