@@ -666,3 +666,5 @@ Upon successful exploitation and establishment of initial access, thorough notes
 
 **Ending Note**  
 Exploitation is not an end in itself—it is a means to demonstrate real-world risk. Success is measured not by code execution alone, but by the ability to safely, reliably, and ethically validate a vulnerability’s impact while maintaining system integrity and client trust.
+
+---
