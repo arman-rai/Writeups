@@ -756,7 +756,7 @@ Post-Exploitation transforms a technical foothold into strategic advantage. Its 
 
 ---
 
-**Lateral Movement – Notes**
+## **Lateral Movement – Notes**
 
 **Purpose of the Stage**  
 Lateral Movement simulates how an attacker would propagate through an internal network after gaining initial access. The objective is to assess the blast radius of a breach—determining how far an adversary could move, what sensitive systems or data they could reach, and whether defenses (e.g., segmentation, monitoring) effectively limit that movement. This stage is critical for evaluating real-world risks such as ransomware spread or data exfiltration at scale.
@@ -818,3 +818,7 @@ All successful lateral movement chains must be meticulously documented to enable
 
 **Ending Note**  
 Lateral Movement transforms a single point of compromise into a comprehensive assessment of enterprise-wide resilience. Its findings often have the highest business impact—exposing how a minor external breach can escalate into a catastrophic internal compromise. Success in this stage hinges on patience, adaptability, and a deep understanding of both attack techniques and defensive telemetry.
+
+---
+
+
