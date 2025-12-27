@@ -15,3 +15,51 @@ A port marked “closed” by a scanner might still be open but unresponsive—m
 
 ---
 
+Network Mapper (Nmap) is a free and open-source utility for network discovery and security auditing, written primarily in C and C++, with components and scripting support in Lua (via the Nmap Scripting Engine) and integration possibilities in Python. It leverages raw IP packets to rapidly determine:
+
+- Live hosts on a network  
+- Open ports and associated services (including application name and version when possible)  
+- Operating system and version  
+- Presence and behavior of firewalls, packet filters, or IDS  
+
+**Primary Use Cases**  
+- Security auditing and vulnerability assessment  
+- Penetration testing simulation  
+- Firewall/IDS rule validation  
+- Network inventory and mapping  
+- Service and port discovery  
+- Response analysis and baseline creation  
+
+**Core Scanning Capabilities**  
+1. **Host Discovery** – Identifies active devices on a network (e.g., via ICMP, ARP, or custom probes).  
+2. **Port Scanning** – Determines open, closed, or filtered ports using various TCP/UDP/SCTP techniques:  
+   - `-sS`: TCP SYN scan (stealthy, default for privileged users)  
+   - `-sT`: TCP Connect scan (full handshake, used when raw packet access is unavailable)  
+   - `-sU`: UDP scan (for connectionless services like DNS, SNMP)  
+   - `-sN/-sF/-sX`: Null, FIN, and Xmas scans (stealth scans that exploit RFC-compliant stack behaviors)  
+   - `-sI`: Idle scan (blind scan through a zombie host for complete anonymity)  
+3. **Service and Version Detection** (`-sV`) – Probes open ports to identify service banners and software versions.  
+4. **OS Detection** (`-O`) – Fingerprint operating systems based on TCP/IP stack characteristics.  
+5. **Scriptable Interaction** – The **Nmap Scripting Engine (NSE)**, powered by Lua, enables advanced tasks like vulnerability detection, brute-forcing, and protocol exploitation via 100s of built-in scripts.  
+
+**Basic Syntax**  
+```bash
+nmap [scan type] [options] <target>
+```
+
+**Example: TCP SYN Scan**  
+```bash
+sudo nmap -sS 127.0.0.1
+```
+- **Open port**: Target replies with SYN-ACK  
+- **Closed port**: Target replies with RST  
+- **Filtered port**: No response (likely due to firewall dropping packets)  
+
+**Key Advantages**  
+- **Flexible**: Adapts to networks with firewalls, NAT, or complex routing  
+- **Fast**: Capable of scanning thousands of ports per second  
+- **Portable**: Runs on Linux, Windows, macOS, and BSD variants  
+- **Extensible**: NSE allows custom logic without modifying core code  
+- **Well-documented**: Supported by a comprehensive book, man pages, and active community  
+
+---
