@@ -669,7 +669,7 @@ Exploitation is not an end in itself—it is a means to demonstrate real-world r
 
 ---
 
-##**Post-Exploitation – Notes**
+## **Post-Exploitation – Notes**
 
 **Purpose of the Stage**  
 Post-Exploitation begins after successful initial access to a target system. Its primary objectives are to:  
