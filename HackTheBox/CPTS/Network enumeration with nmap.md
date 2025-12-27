@@ -63,3 +63,17 @@ sudo nmap -sS 127.0.0.1
 - **Well-documented**: Supported by a comprehensive book, man pages, and active community  
 
 ---
+- Always begin internal network penetration tests with **host discovery** to identify live systems before deeper enumeration.  
+- The most common and efficient method is **ICMP echo request** (`-PE`), but Nmap defaults to **ARP ping** on local subnets (Layer 2) because it’s faster and more reliable—ARP replies confirm host presence without relying on ICMP settings.  
+- Use `-sn` to perform **ping scan only** (no port scanning); this initiates host discovery across a range, list, or single IP.  
+- Save all scan results consistently using `-oA <basename>` to generate normal, XML, and grepable output files—essential for reporting, comparison, and audit trails.  
+- When scanning a **network range**: `nmap -sn 10.129.2.0/24 -oA tnet`  
+- When scanning from an **IP list**: `nmap -sn -iL hosts.lst -oA tnet`  
+- For **specific IPs**: list them individually (`10.129.2.18 10.129.2.19`) or as a range (`10.129.2.18-20`)  
+- To force **ICMP-only probing** and bypass ARP (e.g., for testing or non-local networks), use:  
+  `nmap -sn -PE --disable-arp-ping <target>`  
+- Use `--reason` to understand **why** Nmap marked a host as up (e.g., `arp-response`, `echo-reply`).  
+- Use `--packet-trace` to **observe raw packet flow**—critical for verifying scan behavior and debugging false negatives.  
+- Be aware: hosts may **appear offline** not because they’re down, but because firewalls **block ICMP** or **ignore unsolicited probes**—alternative discovery methods (e.g., TCP ACK, SYN to common ports) may be needed in restricted environments.  
+- Host discovery is **context-dependent**: on local Ethernet, ARP is king; over routed networks or through firewalls, protocol-based probes (ICMP, TCP, UDP) become necessary.  
+- Never assume absence of response equals absence of host—always correlate with other data sources and consider evasion-aware scanning techniques if initial results seem incomplete.
