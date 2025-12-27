@@ -631,3 +631,38 @@ This feedback loop ensures thorough coverage and reduces false negatives.
 - **Align testing with RoE**: If evasive techniques are required, avoid noisy scans; favor manual or low-and-slow probing.
 
 ---
+
+## **Exploitation – Notes**
+
+**Purpose of the Stage**  
+The Exploitation stage focuses on leveraging identified vulnerabilities to achieve a specific objective, such as obtaining initial access (a foothold), executing arbitrary code, or establishing a reverse shell. This phase involves adapting or developing exploit code—often modifying public Proof-of-Concept (PoC) scripts—to function reliably and safely within the target environment.
+
+**Integration with Other Stages**  
+Exploitation is tightly coupled with Vulnerability Assessment and flows directly into Post-Exploitation. While stages should be conceptually distinguished for clarity and documentation, they often overlap in practice. Maintaining clear records of actions taken is essential, especially in engagements spanning weeks or large scopes.
+
+**Prioritization of Attacks**  
+Not all exploitable vulnerabilities should be pursued. Prioritization is based on three key factors:  
+1. **Probability of Success** – Likelihood that the exploit will work against the target (e.g., using CVSS metrics or NVD scoring).  
+2. **Complexity** – Effort required to prepare, adapt, and execute the exploit, influenced by tester experience and exploit maturity.  
+3. **Probability of Damage** – Risk of causing service disruption, data loss, or system instability. Denial-of-Service (DoS) attacks are generally avoided unless explicitly authorized.
+
+A personal scoring system may be used to objectively compare attack options. For example:  
+- Remote File Inclusion: high success probability, low complexity, minimal risk → preferred.  
+- Buffer Overflow: moderate success, high complexity, potential for system crash → deprioritized.
+
+**Preparation and Validation**  
+- If reliable PoC code is unavailable, replicate the target environment in a local VM using matching software versions.  
+- Test exploits in isolation to verify functionality and safety before deployment against live systems.  
+- Reuse known-safe techniques for common misconfigurations when possible.
+
+**Risk Mitigation and Client Communication**  
+- If uncertainty exists regarding exploit stability or impact, **consult the client** before proceeding.  
+- Provide sufficient technical context to enable informed decisions.  
+- If exploitation is declined, document the vulnerability as *theoretically exploitable* and recommend remediation.  
+- Always exercise professional judgment: when in doubt, err on the side of caution and communicate proactively.
+
+**Transition to Next Stage**  
+Upon successful exploitation and establishment of initial access, thorough notes and activity logs must be maintained. The engagement then progresses to **Post-Exploitation**, where persistence, privilege escalation, and data collection begin.
+
+**Ending Note**  
+Exploitation is not an end in itself—it is a means to demonstrate real-world risk. Success is measured not by code execution alone, but by the ability to safely, reliably, and ethically validate a vulnerability’s impact while maintaining system integrity and client trust.
