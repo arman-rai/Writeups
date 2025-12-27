@@ -756,3 +756,65 @@ Post-Exploitation transforms a technical foothold into strategic advantage. Its 
 
 ---
 
+**Lateral Movement – Notes**
+
+**Purpose of the Stage**  
+Lateral Movement simulates how an attacker would propagate through an internal network after gaining initial access. The objective is to assess the blast radius of a breach—determining how far an adversary could move, what sensitive systems or data they could reach, and whether defenses (e.g., segmentation, monitoring) effectively limit that movement. This stage is critical for evaluating real-world risks such as ransomware spread or data exfiltration at scale.
+
+**Integration with the Testing Process**  
+Lateral Movement may begin directly after **Exploitation** (if initial access provides network visibility) or after **Post-Exploitation** (once credentials or network context are gathered). It is inherently iterative and reuses earlier phases—now applied from an internal perspective.
+
+**Key Sub-Phases**
+
+1. **Pivoting**  
+   - Compromised hosts are used as proxies to access otherwise unreachable internal subnets.  
+   - Techniques include SSH dynamic port forwarding, SOCKS proxies (e.g., via `chisel`, `ssh -D`, `proxychains`), or layer-3 tunneling (e.g., `socat`, `sliver`).  
+   - Enables scanning and exploitation of non-routable, internal-only systems (e.g., database servers, domain controllers).
+
+2. **Evasive Testing**  
+   - Internal defenses (EDR, NIDS, micro-segmentation) may detect aggressive scanning or credential abuse.  
+   - Adjust tactics to match the engagement’s evasiveness requirements:  
+     - Use slow, randomized scans.  
+     - Leverage native OS tools (e.g., `wmic`, `net.exe`, `PowerShell`) to avoid signature-based detection.  
+     - Mimic legitimate administrative workflows to blend in.
+
+3. **Information Gathering (Internal Network)**  
+   - Enumerate live hosts via ARP scanning, ICMP sweeps, or DNS queries.  
+   - Identify trust relationships, domain membership, and service accounts.  
+   - Map network topology using routing tables, interface data, and cached credentials from the initial foothold.
+
+4. **Vulnerability Assessment (Internal)**  
+   - Internal systems are often less hardened than external ones, with:  
+     - Default or weak credentials  
+     - Outdated software  
+     - Over-permissive file shares or group policies  
+   - Focus on attack paths enabled by user/group context (e.g., developer accounts with access to CI/CD systems).
+
+5. **(Privilege) Exploitation**  
+   - Common techniques include:  
+     - **Pass-the-Hash (PtH)**: Reuse NTLM hashes without cracking.  
+     - **Pass-the-Ticket (PtT)**: Abuse Kerberos tickets (e.g., Golden/Silver Tickets).  
+     - **Password Reuse/Spraying**: Apply harvested credentials across multiple systems.  
+     - **Relay Attacks**: Use tools like `Responder` or `ntlmrelayx` to intercept and relay authentication requests.  
+   - Prioritize targets that offer high privilege or access to critical data (e.g., SQL servers, file shares, domain controllers).
+
+6. **Post-Exploitation (Per New Host)**  
+   - Repeat privilege escalation, pillaging, and persistence on each newly compromised system.  
+   - Gather host-specific intelligence: local admins, scheduled tasks, credential stores.  
+   - Handle sensitive data in strict accordance with the Rules of Engagement and data handling clauses in the contract.
+
+**Strategic Considerations**  
+- Lateral Movement is not merely technical—it reveals organizational weaknesses:  
+  - Poor network segmentation  
+  - Excessive user privileges  
+  - Inadequate monitoring of internal traffic  
+- The ultimate goal is to reach high-value objectives defined in the scoping phase (e.g., domain admin, payroll database, executive email).
+
+**Transition to Proof-of-Concept**  
+All successful lateral movement chains must be meticulously documented to enable:  
+- Clear reproduction by the client’s security team  
+- Accurate risk prioritization  
+- Validation of defensive gaps  
+
+**Ending Note**  
+Lateral Movement transforms a single point of compromise into a comprehensive assessment of enterprise-wide resilience. Its findings often have the highest business impact—exposing how a minor external breach can escalate into a catastrophic internal compromise. Success in this stage hinges on patience, adaptability, and a deep understanding of both attack techniques and defensive telemetry.
