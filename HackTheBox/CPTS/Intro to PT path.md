@@ -668,3 +668,88 @@ Upon successful exploitation and establishment of initial access, thorough notes
 Exploitation is not an end in itself—it is a means to demonstrate real-world risk. Success is measured not by code execution alone, but by the ability to safely, reliably, and ethically validate a vulnerability’s impact while maintaining system integrity and client trust.
 
 ---
+
+##**Post-Exploitation – Notes**
+
+**Purpose of the Stage**  
+Post-Exploitation begins after successful initial access to a target system. Its primary objectives are to:  
+- Gather sensitive and business-relevant information from a local perspective,  
+- Escalate privileges to maximize control,  
+- Establish persistence to maintain access,  
+- Prepare for lateral movement, and  
+- Demonstrate the real-world impact of the compromise.
+
+This stage inherently involves reapplying earlier phases—Information Gathering, Vulnerability Assessment, and even Exploitation—but from an internal, authenticated viewpoint.
+
+**Evasive Testing Considerations**  
+Once inside a system, actions are more likely to trigger detection by EDR, SIEM, or host-based monitoring. Evasive behavior is critical if the engagement requires stealth. Three testing modes may apply:  
+- **Evasive**: Minimize noise to avoid detection and identify blind spots.  
+- **Hybrid Evasive**: Begin quietly, then gradually increase activity to test detection thresholds.  
+- **Non-Evasive**: Perform aggressive actions to validate defensive responses.  
+
+Even if detected, the engagement retains value: it validates detection capabilities and highlights gaps in response workflows. Always align evasiveness with the Rules of Engagement.
+
+**Information Gathering (Internal Perspective)**  
+Internal reconnaissance expands on external findings by enumerating:  
+- Local network interfaces, routing tables, ARP cache, DNS settings  
+- Active services, shares, printers, databases, and virtualization platforms  
+- Domain membership, group policies, and trust relationships  
+
+This internal map informs pillaging, privilege escalation, and lateral movement strategies.
+
+**Pillaging**  
+Pillaging is the systematic search for high-value data and credentials on the compromised host, including:  
+- Configuration files, scripts, and documents (e.g., .txt, .docx, .xlsx) containing passwords or API keys  
+- Browser histories, saved credentials, and password vaults  
+- SSH keys, Kerberos tickets, and session tokens  
+- Network shares with sensitive or shared data  
+
+Findings serve two purposes:  
+1. Demonstrating business impact (e.g., exposure of customer PII),  
+2. Providing inputs for privilege escalation or lateral movement (e.g., reused credentials).
+
+**Persistence**  
+Establishing persistence ensures continued access in case of disconnection or reboot. Techniques vary by OS and permissions (e.g., cron jobs on Linux, scheduled tasks or registry run keys on Windows). Persistence should be implemented early—especially if the initial exploit is unstable (e.g., a crashing service).
+
+**Vulnerability Assessment (Internal)**  
+With local access, perform a second vulnerability assessment focused on:  
+- Local privilege escalation vectors (e.g., kernel exploits, misconfigured sudo rules, unquoted service paths)  
+- Insecure file permissions, writable binaries, or SUID/SGID binaries  
+- Outdated software or unpatched local services  
+
+Prioritize exploits that are reliable and non-disruptive.
+
+**Privilege Escalation**  
+The goal is to attain the highest level of privilege on the system (e.g., root on Linux, SYSTEM or local/domain admin on Windows). Escalation may be:  
+- **Technical**: Exploiting local vulnerabilities.  
+- **Credential-based**: Using harvested credentials to authenticate as a higher-privileged user.  
+
+Successful escalation dramatically expands access and is often a prerequisite for domain-wide compromise.
+
+**Data Exfiltration**  
+Exfiltration validates whether sensitive data can be removed from the environment. Before proceeding:  
+- **Consult the client**—never exfiltrate real sensitive data without explicit approval.  
+- Use **simulated data** (e.g., fake SSNs, test credit card numbers) that matches regulatory patterns (PCI, HIPAA, etc.) to trigger DLP/EDR without violating compliance.  
+
+Document exfiltration with screenshots or screen recordings showing:  
+- Hostname, IP address, username  
+- File path and sample content  
+- Successful transfer to attacker-controlled system  
+
+If real sensitive data is discovered, **notify the client immediately** per the incident response protocol in the RoE.
+
+**Regulatory and Compliance Context**  
+Common data protection frameworks include:  
+- PCI-DSS (payment data)  
+- HIPAA (health records)  
+- GLBA (financial data)  
+- GDPR (EU personal data)  
+- FISMA, FedRAMP, NIST, ISO 27001, CIS Controls  
+
+While testers are not responsible for compliance enforcement, they must handle data with extreme caution and in accordance with the engagement’s legal boundaries.
+
+**Transition to Lateral Movement**  
+Post-Exploitation outputs—such as credentials, network maps, and domain context—directly feed into Lateral Movement. This stage is not an endpoint but a pivot point toward broader network compromise.
+
+**Ending Note**  
+Post-Exploitation transforms a technical foothold into strategic advantage. Its success is measured not by access alone, but by the clarity with which it demonstrates organizational risk—through data exposure, privilege abuse, and persistence—while adhering strictly to ethical, legal, and contractual boundaries.
