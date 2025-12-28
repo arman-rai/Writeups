@@ -264,3 +264,6 @@ https://nmap.org/book/man-port-scanning-techniques.html
 - Reference full timing details:  
   - [Timing Templates](https://nmap.org/book/performance-timing-templates.html)  
   - [Performance Tuning](https://nmap.org/book/man-performance.html)
+
+---
+
