@@ -129,3 +129,6 @@ https://nmap.org/book/man-port-scanning-techniques.html
   - `-p-`: Full scan (65,535 ports)—comprehensive but slow.  
 
 - Understanding *how* results are derived—not just what they are—enables accurate threat modeling, evasion of false negatives, and informed exploitation decisions.
+
+---
+
