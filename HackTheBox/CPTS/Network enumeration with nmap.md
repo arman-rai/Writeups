@@ -184,3 +184,60 @@ https://nmap.org/book/man-port-scanning-techniques.html
 
 ---
 
+- The **Nmap Scripting Engine (NSE)** extends Nmap beyond port scanning by enabling **Lua-based scripts** to interact with services, extract intelligence, and test for vulnerabilities.  
+- NSE scripts are organized into **14 functional categories**:  
+  - `auth`: credential testing  
+  - `broadcast`: host discovery via broadcast  
+  - `brute`: credential brute-forcing  
+  - `default`: safe, commonly useful scripts (run with `-sC`)  
+  - `discovery`: service enumeration  
+  - `dos`: DoS vulnerability checks (use cautiously)  
+  - `exploit`: active exploitation of known flaws  
+  - `external`: integrates third-party services  
+  - `fuzzer`: protocol fuzzing for crash detection  
+  - `intrusive`: potentially disruptive scripts  
+  - `malware`: detects signs of infection  
+  - `safe`: non-intrusive, read-only probes  
+  - `version`: enhances service detection  
+  - `vuln`: identifies known vulnerabilities  
+
+- **Script invocation syntax**:  
+  - Run **default scripts**: `nmap -sC <target>`  
+  - Run **all scripts in a category**: `nmap --script <category> <target>` (e.g., `--script vuln`)  
+  - Run **specific scripts**: `nmap --script script1,script2 <target>` (e.g., `--script banner,smtp-commands`)  
+
+- **Example**:  
+  ```bash
+  sudo nmap 10.129.2.28 -p 25 --script banner,smtp-commands
+  ```  
+  - `banner`: reveals raw service banner (`220 inlane ESMTP Postfix (Ubuntu)`)  
+  - `smtp-commands`: lists supported SMTP verbs (`VRFY`, `STARTTLS`, etc.), aiding user enumeration  
+
+- The **aggressive scan (`-A`)** combines:  
+  - OS detection (`-O`)  
+  - Version detection (`-sV`)  
+  - Default NSE scripts (`-sC`)  
+  - Traceroute (`--traceroute`)  
+  - Useful for rapid reconnaissance but **noisier** and **less stealthy**  
+
+- **Vulnerability assessment** with `--script vuln`:  
+  - Cross-references detected software (e.g., `Apache 2.4.29`, `WordPress 5.3.4`) against public CVE databases  
+  - Reports specific vulnerabilities (e.g., `CVE-2019-0211`, `CVE-2018-1312`) with severity scores and links  
+  - May reveal exposed paths (`/wp-login.php`), version disclosures (`readme.html`), and valid usernames (`admin`)  
+
+- **Key NSE capabilities demonstrated**:  
+  - **Banner extraction** (often more detailed than `-sV` alone)  
+  - **Application fingerprinting** (e.g., WordPress version via static files)  
+  - **User enumeration** (via `http-wordpress-users`)  
+  - **Automated CVE mapping** (via `vulners` script)  
+
+- **Always verify NSE results**:  
+  - False positives occur; manual validation is essential  
+  - Intrusive or exploit scripts may **disrupt services**—use only with permission  
+  - Safe scripts (`safe`, `discovery`, `version`) are preferred in early phases  
+
+- Full script documentation and library reference: https://nmap.org/nsedoc/index.html  
+- Report incorrect OS/version/script results to improve community database: https://nmap.org/submit/
+
+---
+
