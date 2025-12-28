@@ -289,3 +289,6 @@ https://nmap.org/book/man-port-scanning-techniques.html
   - Spoofed packets often dropped by upstream ISPs or egress filters (BCP38).  
   - Modern stateful firewalls and next-gen IPS may still detect decoy scans via traffic correlation.  
 - **Strategic takeaway**: Evasion isn’t about “hiding completely”—it’s about **blending in**, **exploiting trust assumptions**, and **adapting based on observed filtering behavior**.
+
+---
+
