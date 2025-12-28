@@ -132,3 +132,27 @@ https://nmap.org/book/man-port-scanning-techniques.html
 
 ---
 
+- Always save Nmap scan results for documentation, comparison, and reporting—never rely solely on terminal output.  
+- Nmap supports three primary output formats:  
+  - **Normal (`-oN`)**: Human-readable `.nmap` file—mirrors terminal output with minimal formatting. Ideal for quick review.  
+  - **Grepable (`-oG`)**: Simplified `.gnmap` format with consistent delimiters—optimized for scripting and `grep`/`awk` parsing (e.g., `grep "open" file.gnmap`).  
+  - **XML (`-oX`)**: Structured `.xml` output containing full scan metadata (reasons, timing, host details)—designed for programmatic processing and integration with other tools.  
+- Use **`-oA <basename>`** to save all three formats simultaneously (e.g., `target.nmap`, `target.gnmap`, `target.xml`).  
+- Output files are saved in the current working directory unless a full path is specified.  
+- **XML output enables rich reporting**:  
+  - Convert to **HTML** using `xsltproc`:  
+    ```bash
+    xsltproc target.xml -o target.html
+    ```  
+  - Produces a clean, shareable report suitable for non-technical stakeholders.  
+- **Grepable format structure**:  
+  - Each line starts with `Host: <IP>`  
+  - Open ports listed as `Ports: <port>/open/<proto>//<service>///`  
+  - Closed/filtered ports summarized in `Ignored State`  
+- **Normal format** includes command line, timestamps, and narrative summaries—useful for audit trails.  
+- **XML format** preserves every detail: port states, service detection confidence, MAC/vendor info, timing stats—essential for forensic analysis or automated workflows.  
+- Never discard raw output—future phases (e.g., vulnerability mapping, exploitation planning) often require re-examining original scan context.  
+- Refer to official documentation for advanced output control: https://nmap.org/book/output.html
+
+---
+
