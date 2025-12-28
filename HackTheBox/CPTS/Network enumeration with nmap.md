@@ -267,3 +267,25 @@ https://nmap.org/book/man-port-scanning-techniques.html
 
 ---
 
+- **Firewalls** filter traffic based on rules—dropping (no response) or rejecting (explicit error like ICMP type 3/code 3 or TCP RST)—to block unauthorized access.  
+- **IDS/IPS** systems passively monitor (IDS) or actively block (IPS) traffic using signature- or pattern-based detection (e.g., recognizing Nmap scans). Unlike firewalls, they’re harder to detect because they don’t alter packet flow visibly.  
+- **Filtered ports** often indicate firewall interference; use **ACK scan (`-sA`)** to map firewall rules:  
+  - Open/closed ports return **RST** → marked `unfiltered`  
+  - No response or ICMP errors → marked `filtered`  
+  - Firewalls often allow ACK packets (assuming established sessions), making `-sA` useful for probing rule sets.  
+- **Evading detection and bypassing restrictions**:  
+  - **Decoy scan (`-D RND:N` or `-D IP1,IP2,...`)**: Spoofs source IPs in IP header; your real IP is hidden among decoys. Critical that decoys appear “alive” to avoid triggering anti-spoofing (e.g., SYN flood) defenses.  
+  - **Source IP spoofing (`-S <IP>`)**: Manually set source IP to test if firewall rules are IP-based (e.g., internal IPs allowed). Requires proper interface (`-e`) and often root.  
+  - **Source port manipulation (`--source-port 53`)**: Abuse trusted ports like **53/TCP** (used for DNS zone transfers). Firewalls may permit traffic from these ports, bypassing filters.  
+- **Example**: A port appears `filtered` in a standard SYN scan, but becomes `open` when scanned from source port 53—indicating a firewall rule allowing DNS-related traffic.  
+- **Detecting IPS presence**:  
+  - Use multiple **VPS instances** with distinct IPs.  
+  - If one IP gets blocked during scanning, it suggests active IPS. Switch to another IP and reduce scan aggressiveness.  
+- **Operational security**:  
+  - Combine evasion techniques cautiously: decoys + spoofed ports + timing templates (`-T2` or `-T3`).  
+  - Avoid `-T4`/`-T5` in black-box tests—high packet rates trigger alerts.  
+  - Always validate findings manually (e.g., `nc -p 53 <target> <port>`) to confirm bypass success.  
+- **Limitations**:  
+  - Spoofed packets often dropped by upstream ISPs or egress filters (BCP38).  
+  - Modern stateful firewalls and next-gen IPS may still detect decoy scans via traffic correlation.  
+- **Strategic takeaway**: Evasion isn’t about “hiding completely”—it’s about **blending in**, **exploiting trust assumptions**, and **adapting based on observed filtering behavior**.
