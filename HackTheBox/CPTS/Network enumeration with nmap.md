@@ -77,5 +77,6 @@ sudo nmap -sS 127.0.0.1
 - Be aware: hosts may **appear offline** not because they’re down, but because firewalls **block ICMP** or **ignore unsolicited probes**—alternative discovery methods (e.g., TCP ACK, SYN to common ports) may be needed in restricted environments.  
 - Host discovery is **context-dependent**: on local Ethernet, ARP is king; over routed networks or through firewalls, protocol-based probes (ICMP, TCP, UDP) become necessary.  
 - Never assume absence of response equals absence of host—always correlate with other data sources and consider evasion-aware scanning techniques if initial results seem incomplete.
+ 
 ---
 
