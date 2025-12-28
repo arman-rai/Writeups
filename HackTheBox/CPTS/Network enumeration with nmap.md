@@ -241,3 +241,26 @@ https://nmap.org/book/man-port-scanning-techniques.html
 
 ---
 
+- **Scan performance is critical** when targeting large networks or operating under bandwidth constraints—speed must be balanced against accuracy.  
+- **Round-Trip Time (RTT) timeouts** control how long Nmap waits for responses:  
+  - Default: conservative (e.g., 100–1000 ms initial/max RTT).  
+  - Optimizing with `--initial-rtt-timeout 50ms --max-rtt-timeout 100ms` can **reduce scan time significantly** (e.g., 39s → 12s), but risks **missing slow or distant hosts** due to premature timeouts.  
+- **Retries (`--max-retries`)** determine how many times Nmap resends probes for unresponsive ports:  
+  - Default: **10 retries** (robust but slow).  
+  - Reducing to `--max-retries 0` skips non-responsive ports immediately—**speeds up scans** but may **miss filtered or rate-limited services** (e.g., 23 → 21 open ports detected).  
+- **Packet rate control (`--min-rate <N>`)** forces Nmap to send at least *N* packets per second:  
+  - Example: `--min-rate 300` reduced scan time from **29.8s to 8.7s** with **no loss in accuracy** (23 ports in both cases)—ideal in **white-box** or **trusted environments** with known network capacity and no IDS interference.  
+- **Timing templates (`-T 0–5`)** offer predefined performance/stealth trade-offs:  
+  - `-T0` (**paranoid**) / `-T1` (**sneaky**): Extremely slow; evades basic IDS (serial scanning, long delays).  
+  - `-T2` (**polite**): Reduces bandwidth impact; useful on congested or fragile networks.  
+  - `-T3` (**normal**): Default; balanced speed and reliability.  
+  - `-T4` (**aggressive**): Assumes fast, reliable network—recommended for local/internal scans.  
+  - `-T5` (**insane**): Maximizes speed (low timeouts, minimal retries, high parallelism); risks **inaccuracy** or **detection**, but effective in permissive environments (e.g., **32s → 18s**, full port coverage retained).  
+- **Key trade-off**: **Speed vs. completeness**—aggressive tuning may skip hosts, miss filtered ports, or trigger defenses. Always validate critical findings with slower, more thorough scans if needed.  
+- **Best practices**:  
+  - Use `-T4` for internal networks with good connectivity.  
+  - Avoid `-T5` or `--max-retries 0` in black-box engagements unless speed is prioritized over coverage.  
+  - In white-box tests with network knowledge, combine `--min-rate`, adjusted RTT, and `-T4` for optimal throughput.  
+- Reference full timing details:  
+  - [Timing Templates](https://nmap.org/book/performance-timing-templates.html)  
+  - [Performance Tuning](https://nmap.org/book/man-performance.html)
