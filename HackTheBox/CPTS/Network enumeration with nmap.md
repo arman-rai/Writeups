@@ -156,3 +156,31 @@ https://nmap.org/book/man-port-scanning-techniques.html
 
 ---
 
+- **Service version detection (`-sV`)** is critical for vulnerability mapping—exact versions enable precise exploit selection and source code analysis.  
+- Start with a **lightweight port scan** (e.g., top ports or common ranges) before launching a full `-p- -sV` scan to reduce noise and avoid triggering defenses.  
+- **Full port scans are slow**—use real-time progress monitoring:  
+  - Press **Spacebar** during a scan to show immediate stats.  
+  - Use `--stats-every=5s` (or `1m`, etc.) for periodic automated updates.  
+  - Increase verbosity with `-v` or `-vv` to see **open ports as they’re discovered**, aiding early triage.  
+- Nmap performs **banner grabbing** by default during `-sV`: it connects to open ports and reads initial service responses (e.g., `220 inlane ESMTP Postfix (Ubuntu)`).  
+- **Banners often contain more detail than Nmap reports**:  
+  - Nmap uses **signature matching** (based on known responses) to normalize and classify services.  
+  - This normalization may **omit distribution-specific info** (e.g., “(Ubuntu)”) even when present in raw banners.  
+- **Manual verification is essential**:  
+  - Use `nc`, `telnet`, or `openssl s_client` to manually connect and inspect raw banners.  
+  - Capture traffic with `tcpdump` to observe the full exchange, including **PSH-ACK packets carrying banner data**.  
+- The **three-way handshake precedes banner transmission**:  
+  1. Client → Server: **SYN**  
+  2. Server → Client: **SYN-ACK**  
+  3. Client → Server: **ACK**  
+  4. Server → Client: **PSH-ACK + banner payload**  
+  5. Client → Server: **ACK** (confirmation)  
+- Some services **delay or suppress banners** until valid input is received—Nmap’s `-sV` may send protocol-specific probes (e.g., `HELP`, `EHLO`) to trigger responses.  
+- **Custom banners or version obfuscation** can mislead automated scans—always cross-check with manual interaction or alternative tools.  
+- If Nmap’s version detection is inaccurate or incomplete, **submit corrections** via https://nmap.org/submit/ to improve the global fingerprint database.  
+- Combine `-sV` with other discovery phases:  
+  - Host discovery (`-sn`) → Port scan (`-p-`) → Version detection (`-sV`) → OS detection (`-O`) → Scripting (`--script`)  
+- Remember: **version accuracy directly impacts exploit reliability**—never assume a service is “just Apache”; the patch level (e.g., `2.4.29`) may determine whether a public exploit succeeds or crashes the service.
+
+---
+
