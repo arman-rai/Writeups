@@ -107,3 +107,5 @@ grep "Host script results" scan.nmap -A 10 | grep -E "hostname|vhost"
 - Never use aggressive scans (`-T5`) on initial external recon - you'll get banned
 - Store all scans with timestamped filenames for historical comparison
 - For JavaScript-heavy apps: complement Nmap with subfinder/assetfinder for subdomain discovery
+
+---
