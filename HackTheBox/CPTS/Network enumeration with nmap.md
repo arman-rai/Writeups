@@ -80,3 +80,52 @@ sudo nmap -sS 127.0.0.1
  
 ---
 
+https://nmap.org/book/man-port-scanning-techniques.html
+
+- Port state interpretation is critical:  
+  - **open**: Service is actively accepting connections (TCP SYN→SYN-ACK, UDP reply, or SCTP INIT→INIT-ACK).  
+  - **closed**: Port is reachable but no service listens (TCP RST response, ICMP port unreachable for UDP).  
+  - **filtered**: Firewall/filter blocks or drops probes—no definitive response (no reply or non-port-unreach ICMP errors).  
+  - **unfiltered**: Only in ACK scans—port is reachable but state (open/closed) undetermined.  
+  - **open|filtered**: No response in UDP/SCTP scans; could be open with silent service or filtered.  
+  - **closed|filtered**: Exclusive to idle scans—ambiguous due to zombie host behavior.  
+
+- **SYN scan (`-sS`)** is default for privileged users:  
+  - Sends SYN, interprets SYN-ACK (open), RST (closed), or no reply (filtered).  
+  - Fast, stealthy (no full connection), but requires raw socket access (root/Admin).  
+
+- **Connect scan (`-sT`)** is fallback for unprivileged users:  
+  - Completes full TCP handshake via OS `connect()` call.  
+  - Accurate but noisy—logs appear on target; less stealthy but more “polite” to services.  
+
+- **Filtered ports** arise from firewall rules:  
+  - **Dropped packets**: No response → Nmap retries (visible via `--packet-trace` showing multiple SENT, no RCVD).  
+  - **Rejected packets**: ICMP type 3/code 3 (“port unreachable”) → still marked *filtered* because the service isn’t directly responding.  
+
+- **UDP scanning (`-sU`)** is inherently slow and ambiguous:  
+  - Empty or protocol-specific probes sent; response only if service is configured to reply (e.g., DNS, NetBIOS).  
+  - **Closed**: ICMP port unreachable (type 3/code 3).  
+  - **Open**: Direct UDP response from service.  
+  - **open|filtered**: No response (silent service or dropped by firewall).  
+  - Rate-limiting (e.g., Linux ICMP throttling) drastically slows scans.  
+
+- **Version detection (`-sV`)** goes beyond port state:  
+  - Actively interrogates open ports with protocol-specific probes.  
+  - Extracts service name, version, OS hints (e.g., “Samba smbd 3.X–4.X”), and metadata (e.g., workgroup).  
+  - May establish full connections and send application-layer payloads.  
+  - Results should be verified; false positives occur—submit corrections via https://nmap.org/submit/.  
+
+- Always disable extraneous discovery when analyzing specific behaviors:  
+  - `-Pn`: Skip host discovery (assume host up).  
+  - `-n`: Disable DNS resolution (speed + clarity).  
+  - `--disable-arp-ping`: Force IP-layer probes (bypass ARP on local nets).  
+  - `--packet-trace`: Observe raw packet flow for validation.  
+  - `--reason`: Understand *why* a port is in a given state (e.g., “syn-ack”, “port-unreach”, “no-response”).  
+
+- Port selection strategies:  
+  - `--top-ports=N`: Scan N most common ports from Nmap’s database.  
+  - `-F`: Fast scan (top 100 ports).  
+  - `-p 22,80,443` or `-p 1-1000`: Custom lists or ranges.  
+  - `-p-`: Full scan (65,535 ports)—comprehensive but slow.  
+
+- Understanding *how* results are derived—not just what they are—enables accurate threat modeling, evasion of false negatives, and informed exploitation decisions.
