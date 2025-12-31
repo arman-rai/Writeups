@@ -1,7 +1,3 @@
-**Network File System (NFS) Enumeration – Revision Notes**
-
----
-
 ### **Overview**
 - **NFS (Network File System)** is a protocol developed by Sun Microsystems for sharing file systems over a network, primarily used in **Linux/Unix environments**.
 - Unlike SMB, NFS uses **ONC-RPC (Open Network Computing Remote Procedure Call)** over **port 111 (rpcbind)** and **port 2049 (nfs)**.
@@ -119,12 +115,14 @@ sudo umount /tmp/nfs-mount
 ---
 
 ### **Summary Checklist**
-✅ Scan **ports 111 & 2049**  
-✅ Run `showmount -e` to list exports  
-✅ Use `nmap --script nfs*` for quick content preview  
-✅ **Mount** share locally for full inspection  
-✅ Check for **SSH keys**, **credentials**, **flags**, and **SUID opportunities**  
-✅ Verify if `no_root_squash` is enabled → **critical finding**  
-✅ Always **unmount** after enumeration  
+-  Scan **ports 111 & 2049**  
+-  Run `showmount -e` to list exports  
+-  Use `nmap --script nfs*` for quick content preview  
+-  **Mount** share locally for full inspection  
+-  Check for **SSH keys**, **credentials**, **flags**, and **SUID opportunities**  
+-  Verify if `no_root_squash` is enabled → **critical finding**  
+-  Always **unmount** after enumeration  
 
 NFS is often overlooked but can provide direct paths to privilege escalation—especially when administrators prioritize convenience over secure UID/GID handling.
+
+---
