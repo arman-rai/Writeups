@@ -125,13 +125,13 @@ openssl s_client -connect 10.129.14.136:21 -starttls ftp
 ---
 
 ### Summary Checklist for FTP Enumeration
-✅ Scan for port 21 (and non-standard ports)  
-✅ Test anonymous login  
-✅ List and download all accessible files  
-✅ Check for upload permissions  
-✅ Use Nmap NSE scripts (`ftp-anon`, `ftp-syst`)  
-✅ Inspect SSL cert if FTPS is used  
-✅ Search for credentials, config files, or secrets in downloaded content  
-✅ Assess integration with web servers (potential RCE via upload)
+- Scan for port 21 (and non-standard ports)  
+- Test anonymous login  
+- List and download all accessible files  
+- Check for upload permissions  
+- Use Nmap NSE scripts (`ftp-anon`, `ftp-syst`)  
+- Inspect SSL cert if FTPS is used  
+- Search for credentials, config files, or secrets in downloaded content  
+- Assess integration with web servers (potential RCE via upload)
 
 Understanding and exploiting FTP/TFTP is not just about file access—it’s often a gateway to deeper system compromise.
