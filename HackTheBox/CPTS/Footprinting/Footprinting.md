@@ -249,3 +249,80 @@ This confirms active use of Azure Blob Storage and provides the exact endpoint.
 
 ---
 
+**Social Media and Employee Reconnaissance in Penetration Testing – Revision Notes**
+
+Identifying and analyzing employees on professional social networks—primarily **LinkedIn**, but also platforms like **Xing**—is a critical component of **passive reconnaissance**. This OSINT technique yields actionable intelligence about a target organization’s **technology stack**, **development practices**, **security posture**, and **infrastructure choices**.
+
+---
+### Key Intelligence Sources from Employee Profiles
+
+#### 1. **Job Postings**
+Public job listings often disclose:
+- **Programming languages**: e.g., Java, C#, C++, Python, Ruby, PHP, Perl  
+- **Databases**: PostgreSQL, MySQL, SQL Server, Oracle  
+- **Web frameworks**: Flask, Django, Spring, ASP.NET MVC  
+- **Tools & platforms**:  
+  - Version control: Git, SVN, Perforce  
+  - CI/CD & Agile: Jenkins, GitLab CI, Agile workflows  
+  - Atlassian Suite: **Jira**, **Confluence**, **Bitbucket** → potential external or internal access points  
+- **Architectural patterns**: Microservices, RESTful APIs, SOA  
+- **Security practices**: CompTIA Security+, secure coding, OWASP awareness  
+
+> *Example Insight*: Use of **Django** implies potential misconfigurations such as debug mode exposure, weak secret keys, or default admin paths. Public repositories (e.g., GitHub) may reveal insecure patterns or hardcoded credentials.
+
+#### 2. **Employee “About” and “Experience” Sections**
+- **Technologies listed**: React, Svelte, AngularJS, Kafka, Elasticsearch, Redis, NumPy  
+- **Project descriptions**: e.g., “Led CRM mobile app development” or “Built BrokerVotes system” → reveals application types and scale  
+- **GitHub links**: Direct access to **public code repositories**  
+  - May contain:
+    - Hardcoded **JWT tokens**, API keys, or credentials  
+    - Personal email addresses → useful for phishing or username enumeration  
+    - Default file structures matching framework documentation (e.g., `settings.py` in Django)
+
+> *Critical Risk Example*: A developer’s GitHub repo includes a JWT decoding function with a **redacted but partially visible secret**—indicating poor key management or potential token reuse in production.
+
+#### 3. **Skill Endorsements and Career Trajectories**
+- Senior roles (e.g., “Vice President, Software Engineer”) often indicate **decision-making influence** over architecture.
+- Security-focused roles (e.g., “Application Security Engineer”) signal:
+  - Use of SAST/DAST tools
+  - Security policies (e.g., mandatory unit testing, code reviews)
+  - Adoption of standards like OWASP Top 10
+
+---
+
+### Strategic Applications in Penetration Testing
+
+- **Technology Mapping**:  
+  Correlate employee skills with discovered services (e.g., a Flask-based app on `dev.inlanefreight.com` aligns with Python-heavy hiring).
+
+- **Attack Surface Expansion**:  
+  - Atlassian Suite → check for exposed **Jira/Confluence instances**  
+  - GitHub repos → scan for secrets using tools like **gitleaks** or **truffleHog**  
+  - JWT usage → test for weak signing algorithms or brute-forceable secrets
+
+- **Credential and User Enumeration**:  
+  Employee names → generate username formats (e.g., `firstname.lastname@company.com`) for authentication testing.
+
+- **Phishing and Social Engineering Prep**:  
+  Personal details (projects, interests, tools) enable highly targeted lures.
+
+---
+
+### Ethical and Methodological Considerations
+- Focus on **publicly available information only**.
+- Avoid direct interaction (e.g., connection requests) unless authorized.
+- Use findings to **inform technical testing**, not replace it.
+- Always cross-reference with other OSINT sources (DNS, certificates, job boards).
+
+---
+
+### Employee recon -  summary
+Employee reconnaissance transforms **human data** into **technical intelligence**. By analyzing job posts, profiles, and shared projects, penetration testers can:
+- Accurately predict backend/frontend technologies  
+- Identify misconfigured or exposed development resources  
+- Discover high-value targets (e.g., source code, secrets, collaboration platforms)  
+- Formulate realistic, context-aware attack scenarios  
+
+This approach embodies **Principle 1 of enumeration**: *“There is more than meets the eye.”* The public face of an employee often reveals the hidden architecture of the enterprise.
+
+---
