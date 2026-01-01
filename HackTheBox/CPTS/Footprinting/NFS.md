@@ -7,12 +7,12 @@
 ---
 
 ### **Key NFS Versions**
-| Version | Features |
-|--------|---------|
-| **NFSv2** | UDP-only, legacy, limited error reporting |
-| **NFSv3** | TCP/UDP, larger files, async writes, better error handling |
-| **NFSv4** | **User authentication (Kerberos)**, firewall-friendly (port 2049 only), ACLs, stateful |
-| **NFSv4.1** | Adds **pNFS** (parallel NFS) for clustered storage and **session trunking** |
+| Version     | Features                                                                               |
+| ----------- | -------------------------------------------------------------------------------------- |
+| **NFSv2**   | UDP-only, legacy, limited error reporting                                              |
+| **NFSv3**   | TCP/UDP, larger files, async writes, better error handling                             |
+| **NFSv4**   | **User authentication (Kerberos)**, firewall-friendly (port 2049 only), ACLs, stateful |
+| **NFSv4.1** | Adds **pNFS** (parallel NFS) for clustered storage and **session trunking**            |
 
 > **Security Note**: NFSv2/v3 trust client-reported UIDs/GIDs—**only safe in trusted networks**.
 
