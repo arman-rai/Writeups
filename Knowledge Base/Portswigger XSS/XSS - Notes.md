@@ -29,7 +29,7 @@ Here is the translation:
         
 - **Sink (`document.write`):** This is where the dangerous action happens. `document.write` is a function that literally writes HTML code onto the page while it's loading.
 
-So, all I had to do was just insert xss code on the sink that would be rendered by the source in this case the function
+=> So, all I had to do was just insert xss code on the sink that would be rendered by the source in this case the function
 
 ```
 <script>
@@ -41,4 +41,12 @@ So, all I had to do was just insert xss code on the sink that would be rendered 
                             trackSearch(query);
                         }
                     </script>
+```
+
+---
+
+## Lab
+
+```
+
 ```
