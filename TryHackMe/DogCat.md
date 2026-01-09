@@ -18,3 +18,4 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
+I'm thinking this as LFI on the /?view=dog/
