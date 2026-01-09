@@ -66,3 +66,5 @@ Here is the translation:
                             
 ```
 
+example:
+storeID=London 
