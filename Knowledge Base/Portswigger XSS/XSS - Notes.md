@@ -96,4 +96,5 @@ Always look at the **Source** of the data in the JavaScript.
 </script>
 ```
 
-this needs side effect instead of runing 
+this needs side effect instead of running alert() or something
+We use onload or onerror attribs
