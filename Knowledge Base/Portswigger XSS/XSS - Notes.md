@@ -66,4 +66,4 @@ Here is the translation:
                             
 ```
 
-This was similar as we had to escape two tags <option> and <
+This was similar as we had to escape two tags <option> and <select>
