@@ -23,4 +23,9 @@ so I fuzzed ot and got one
 ```
 lost+found              [Status: 200, Size: 771, Words: 108, Lines: 24]
 ```
-but this has nothing interesting except for the errors seems like the sc
+
+but this has nothing interesting except for the errors seems like the src code is similar to this
+```
+if (!($view starts with "dog" or "cat")) die();
+include("dog/" . $view . ".php");
+```
