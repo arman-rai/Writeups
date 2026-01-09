@@ -66,5 +66,4 @@ Here is the translation:
                             
 ```
 
-example:
-storeID=London 
+This was similar as we had to escape two tags <option> and <
