@@ -96,4 +96,4 @@ Always look at the **Source** of the data in the JavaScript.
 </script>
 ```
 
-'</span><script>alert(1)</script>
+so 
