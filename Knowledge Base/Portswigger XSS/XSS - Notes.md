@@ -74,3 +74,14 @@ and yeah we have to use `&` on the GET parameter to achieve this so mine was
 
 ## Lab
 
+```
+ <script>
+                            function doSearchQuery(query) {
+                                document.getElementById('searchMessage').innerHTML = query;
+                            }
+                            var query = (new URLSearchParams(window.location.search)).get('search');
+                            if(query) {
+                                doSearchQuery(query);
+                            }
+</script>
+```
