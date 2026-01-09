@@ -9,3 +9,4 @@ https://encyclopedia.kaspersky.com/glossary/dangling-markup/
 
 
 ⭐️ https://pwn.college/content-injection~24cec712/html-js
+https://www.intigriti.com/researchers/hackademy/cross-site-scripting-xss/how-to-test-for-cross-site-scripting
