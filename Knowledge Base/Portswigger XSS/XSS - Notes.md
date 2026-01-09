@@ -99,3 +99,6 @@ Always look at the **Source** of the data in the JavaScript.
 this needs side effect instead of running alert() directly or something
 We use onload or onerror attribs
 so I used this `<img src=1 onerror=alert(1)>`
+
+---
+
