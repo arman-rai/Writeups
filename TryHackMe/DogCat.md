@@ -19,3 +19,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 I'm thinking this as LFI on the /?view=dog/
+so I fuzzed ot and got one
+```
+lost+found              [Status: 200, Size: 771, Words: 108, Lines: 24]
+```
+but this has nothing interesting except for the errors seems like the sc
