@@ -72,6 +72,16 @@ and yeah we have to use `&` on the GET parameter to achieve this so mine was
 
 ---
 
+Always look at the **Source** of the data in the JavaScript.
+
+- If it says `location.hash` -> Attack the `#` part of the URL.
+    
+- If it says `location.search` -> Attack the `?` parameters (GET).
+    
+- If it says `document.referrer` -> Attack the HTTP Referer header.
+
+---
+
 ## Lab
 
 ```
