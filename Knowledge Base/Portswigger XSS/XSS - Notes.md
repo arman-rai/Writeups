@@ -17,6 +17,7 @@ https://portswigger.net/academy/labs/launch/09e0bee59e32e92a78e614589793110f95c3
 ---
 
 ## Lab DOM XSS
+
 he lab title is "DOM XSS in `document.write` sink using source `location.search`."
 
 Here is the translation:
