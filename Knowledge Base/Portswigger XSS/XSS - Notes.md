@@ -66,6 +66,9 @@ Here is the translation:
                             
 ```
 
-This was similar as we had to escape two tags <option> and <select> and then put on alert() to solve the lab
-and yeah we have to use & on the GET parameter to achieve this so mine was
+This was similar as we had to escape two tags `<option> `and `<select>` and then put on alert() to solve the lab
+and yeah we have to use `&` on the GET parameter to achieve this so mine was
 `GET /product?productId=1&storeId="></option></select><img src=1 onerror=alert(1)> HTTP/2`
+
+---
+
