@@ -128,3 +128,7 @@ Accept-Encoding: gzip, deflate, br
 ---
 
 Another potential sink to look out for is jQuery's `$()` selector function, which can be used to inject malicious objects into the DOM.
+
+Dated vulnerability
+`$(window).on('hashchange', function() { var element = $(location.hash); element[0].scrollIntoView(); });`
+and we can use this as the payload to invoke 
