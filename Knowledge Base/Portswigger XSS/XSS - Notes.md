@@ -103,3 +103,5 @@ so I used this `<img src=1 onerror=alert(1)>`
 
 ---
 
+## Lab jQuery
+This was also easy as the 
