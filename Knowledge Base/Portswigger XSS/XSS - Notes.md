@@ -131,4 +131,5 @@ Another potential sink to look out for is jQuery's `$()` selector function, wh
 
 Dated vulnerability
 `$(window).on('hashchange', function() { var element = $(location.hash); element[0].scrollIntoView(); });`
-and we can use this as the payload to invoke 
+and we can use this as the payload to invoke XSS
+`<iframe src="https://vulnerable-website.com#" onload="this.src+='<img src=1 onerror=alert(1)>'">`
