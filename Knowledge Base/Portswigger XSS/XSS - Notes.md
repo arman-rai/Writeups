@@ -124,3 +124,7 @@ Sec-Fetch-Dest: document
 Accept-Encoding: gzip, deflate, br
 
 ```
+
+---
+
+Another potential sink to look out for is jQuery's `$()` selector function, which can be used to inject malicious objects into the DOM.
