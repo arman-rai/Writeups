@@ -133,3 +133,16 @@ Dated vulnerability
 `$(window).on('hashchange', function() { var element = $(location.hash); element[0].scrollIntoView(); });`
 and we can use this as the payload to invoke XSS
 `<iframe src="https://vulnerable-website.com#" onload="this.src+='<img src=1 onerror=alert(1)>'">`
+
+---
+
+## Lab
+```
+  <script>
+                        $(window).on('hashchange', function(){
+                            var post = $('section.blog-list h2:contains(' + decodeURIComponent(window.location.hash.slice(1)) + ')');
+                            if (post) post.get(0).scrollIntoView();
+                        });
+</script>
+```
+
