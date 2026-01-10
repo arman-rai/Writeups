@@ -104,4 +104,5 @@ so I used this `<img src=1 onerror=alert(1)>`
 ---
 
 ## Lab jQuery
-This was also easy as the 
+This was also easy as the payload was already provided in the notes section i.e. `javascript:alert(document.domain)`
+then all I did was a GET to make it run j
