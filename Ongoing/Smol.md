@@ -20,6 +20,10 @@ CVE-2018-20463 and CVE-2018-20462
 
 these were the quickhits
 ```
+wp-content              [Status: 301, Size: 317, Words: 20, Lines: 10, Duration: 40ms]
+wp-admin                [Status: 301, Size: 315, Words: 20, Lines: 10, Duration: 40ms]
+wp-includes             [Status: 301, Size: 318, Words: 20, Lines: 10, Duration: 40ms]
+server-status           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 37ms]
 .hta                    [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
 .ht_wsr.txt             [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
 .htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
@@ -53,8 +57,8 @@ readme.html             [Status: 200, Size: 7409, Words: 750, Lines: 98, Duratio
 server-status/          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
 wp-content/plugins/akismet/akismet.php [Status: 200, Size: 69, Words: 15, Lines: 1, Duration: 39ms]
 wp-content/uploads/     [Status: 200, Size: 1932, Words: 124, Lines: 22, Duration: 43ms]
-
 ```
+
 this is the PoC file
 ```
 ChatGPT translation of the page that doesn't render in archive.org:
@@ -103,4 +107,5 @@ http://localhost/wp-content/plugins/jsmol2wp/php/jsmol.php
 The report describes two vulnerabilities in a WordPress plugin called "jsmol2wp". The first vulnerability is an arbitrary file read and server-side request forgery (SSRF) vulnerability (CVE-2018-20463) which can be exploited by controlling the $query parameter of file_get_contents in the jsmol.php file. The second vulnerability is a reflected cross-site scripting (XSS) vulnerability (CVE-2018-20462) which can be exploited by encoding the payload in BASE64. The report provides proof-of-concept (POC) examples for each vulnerability.
 
 ```
+
 
