@@ -14,5 +14,4 @@ creds:
 ```
 Jose Mario Llado Marti
 admin@smol.thm
-
 ```
