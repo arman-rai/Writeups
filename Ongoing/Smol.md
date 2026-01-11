@@ -18,6 +18,7 @@ wpuser:kbLSF2Vop#lw3rjDZ629*Z%G
 did a wpscan and as given, we found a CVE for XSS and SSRF
 CVE-2018-20463 and CVE-2018-20462
 
+
 this is the PoC file
 ```
 ChatGPT translation of the page that doesn't render in archive.org:
