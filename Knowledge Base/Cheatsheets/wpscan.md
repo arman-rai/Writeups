@@ -144,9 +144,3 @@ We always explain the fix. If you find these issues, here is what you tell the c
     
 
 ---
-
-### Next Step for You
-
-You mentioned you are interested in XSS. A common vector in WordPress is Authenticated XSS via plugin settings.
-
-Would you like me to show you how to use wpscan to find a specific plugin version, and then search searchsploit or Google to see if that version has a known XSS vulnerability?
