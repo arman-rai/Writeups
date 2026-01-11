@@ -18,7 +18,43 @@ wpuser:kbLSF2Vop#lw3rjDZ629*Z%G
 did a wpscan and as given, we found a CVE for XSS and SSRF
 CVE-2018-20463 and CVE-2018-20462
 
+these were the quickhits
+```
+.hta                    [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.ht_wsr.txt             [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htaccess               [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htaccess-dev           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess-marco         [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htaccess-local         [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 40ms]
+.htaccess.BAK           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 40ms]
+.htaccess.old           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess.bak1          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess.sample        [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess.txt           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess.bak           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 40ms]
+.htaccess.orig          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess.save          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess_extra         [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccess_sc            [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htaccess_orig          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htaccessBAK            [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 41ms]
+.htpasswd_test          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htpasswd-old           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+.htgroup                [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccessOLD2           [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htpasswd               [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htaccessOLD            [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 40ms]
+.htaccess~              [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 40ms]
+.htpasswds              [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+.htusers                [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+index.phps              [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 38ms]
+license.txt             [Status: 200, Size: 19915, Words: 3331, Lines: 385, Duration: 40ms]
+readme.html             [Status: 200, Size: 7409, Words: 750, Lines: 98, Duration: 39ms]
+server-status/          [Status: 403, Size: 277, Words: 20, Lines: 10, Duration: 39ms]
+wp-content/plugins/akismet/akismet.php [Status: 200, Size: 69, Words: 15, Lines: 1, Duration: 39ms]
+wp-content/uploads/     [Status: 200, Size: 1932, Words: 124, Lines: 22, Duration: 43ms]
 
+```
 this is the PoC file
 ```
 ChatGPT translation of the page that doesn't render in archive.org:
