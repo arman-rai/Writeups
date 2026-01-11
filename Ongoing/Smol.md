@@ -12,6 +12,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 creds:
 ```
-Jose Mario Llado Marti
-admin@smol.thm
+wpuser:
 ```
+
+did a wpscan and as given, we found a CVE for XSS and SSRF
+CVE-2018-20463 and CVE-2018-20462
